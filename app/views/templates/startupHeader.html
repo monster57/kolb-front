@@ -1,0 +1,39 @@
+<md-content class="md-padding kbit-card " layout-xs="column" layout="row">
+    <div flex-xs="" flex-gt-xs="100" layout="column">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+            <md-card-content>
+                    <div layout-gt-xs="row">
+                        <div ng-if="!basic_details.logo">
+                            <p><label>Upload your company logo </label></p>
+                            <p> <input id="#fileToUpload" type="file" ng-model="basic_details.logo" onchange="angular.element(this).scope().onUpload(this,'logo')">
+                                <img ng-if='logo[logo.length-1].data' class="eq-media-medium-thumb" ng-src="{{logo[logo.length-1].data}}"></p>
+                        </div>
+                        <div ng-if="basic_details.logo != null">
+                            <md-input-container class="md-block">
+                                <img ng-src="{{basic_details.logo.data}}" width="150">
+                            </md-input-container>
+                        </div>
+                        <div flex="5" hide-xs hide-sm>
+                        </div>
+                        <div flex="100" class="flex flex-col">
+                            <p><input style="border: snow" contenteditable="true" class="h2" id="example-one" ng-model="basic_details.name"
+                                    ng-model-options="{debounce : 2000}" ng-change="saveBasicDetails(basic_details)">
+                            </p>
+                            <p>
+                                <input style="border: snow" contenteditable="true" id="example-one" ng-model='basic_details.url' ng-model-options="{debounce : 2000}" ng-change="saveBasicDetails(basic_details)">
+                            </p>
+                            <p style="margin-left: 1.5%"> {{area_of_operation}}</p>
+                            <p style="margin-left: 1.5%"> {{userName}} ({{userInfo.designation}})</p>
+                            <p style="margin-left: 1.5%"> <span class="kbit-help-text">Email for communication:</span> {{userInfo.email}}</p>
+
+                            <div flex="15" hide-xs hide-sm>
+                            </div>
+                        </div>
+                    </div>
+                    <md-button ng-if='!basic_details.logo.data' ng-disabled='!logo[logo.length-1].data' type='submit' class='md-raised md-primary' ng-click='saveBasicDetails({"logo":{data:logo[logo.length-1].data} })'>
+                        Save
+                    </md-button>
+            </md-card-content>
+        </md-card>
+    </div>
+</md-content>

@@ -1,0 +1,42 @@
+<div class="eq-floating-box">
+    <form ng-submit="login()" ng-if="!forgotPassword.status">
+        <div id="login-page" class="eq-content-container" class="text-center">
+                <center class="kbit-screen-title">Sign in with KBITs Startup Cell</center>
+            <div layout-gt-xs="row">
+                <md-input-container class="md-block" flex-gt-xs>
+                    <label>Email</label>
+                    <input id="username" name="username" type="email" data-ng-model="user.email" required>
+                </md-input-container>
+            </div>
+            <div layout-gt-xs="row">
+                <md-input-container class="md-block" flex-gt-xs>
+                    <label>Password</label>
+                    <input type="password" data-ng-model="user.password" required>
+                </md-input-container>
+            </div>
+            <div class="row" align="center">
+                <md-button class="md-raised md-primary" type="submit" value="Submit"> Sign In</md-button>
+            </div>
+            <hr>
+            <div class="registration text-center">
+                <p><a href="/register" >Register Now</a></p>
+                <p><a href="#" ng-click="showForgotPasswordBlock()">Forgot Email/Password?</a></p>
+            </div>
+        </div>
+    </form>
+    <form ng-if="forgotPassword.status">
+        <div layout-align="center center">
+            <img class=" responsive-img" src="images/kbits-logo.png" width="80" style="margin-top:0px">
+            <span text-align="center" style="margin-left: 36%;" class="kbit-screen-title">Forgot Password</span>
+        </div>
+        <div layout-gt-xs="row">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Email</label>
+                <input id="username" name="username" type="email" data-ng-model="forgotPassword.email" required>
+            </md-input-container>
+        </div>
+        <div class="row" align="center">
+            <md-button class="md-raised md-primary" type="submit" ng-click="sendRecoveryMail(forgotPassword)"> send</md-button>
+        </div>
+    </form>
+</div>

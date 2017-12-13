@@ -1,0 +1,55 @@
+{
+    "Draft":[
+        {
+            "state": "Submit",
+            "transition": "Submit For Registration"
+        },
+        {
+            "state": "Rejected",
+            "transition": "Reject"
+        }
+    ],
+    "Submit":[
+        {
+            "state": "Stage3",
+            "transition": "Send To Senior Manager"
+        },
+        {
+            "state": "Rejected",
+            "transition": "Reject"
+        }
+    ],
+    "Stage3":[
+        {
+            "state": "Stage4",
+            "transition": "Send To Nodal Officer"
+        },
+        {
+            "state": "Rejected",
+            "transition": "Reject"
+        }
+    ],
+    "Stage4":[
+        {
+            "state": "Stage5",
+            "transition": "Send To MD"
+        },
+        {
+            "state": "Rejected",
+            "transition": "Reject"
+        }
+    ],
+    "Stage5":[
+        {
+            "state": "Approve",
+            "transition": "Approve"
+        },
+        {
+            "state": "Reject",
+            "transition": "Reject"
+        }
+    ]
+
+
+    
+}

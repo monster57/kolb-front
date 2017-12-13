@@ -1,0 +1,170 @@
+<div id="body">
+    <md-content class="md-padding kbit-card" layout-xs="column" layout="row">
+        <div flex-xs="" flex-gt-xs="100" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                <md-card-content>
+                    <div layout-gt-xs="row">
+                        <md-input-container class="md-block" flex-gt-xs align="center">
+                            <span class="kbit-screen-title">As of Now</span>
+                        </md-input-container>
+                    </div>
+                    <div layout-gt-xs="row">
+                        <md-input-container class="md-block" flex-gt-xs align="center">
+                            <span class="kbit-screen-title">{{application.issued}}</span>
+                            <p>Certificate issued</p>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-xs align="center">
+                            <span class="kbit-screen-title">{{application.pending}}</span>
+                            <p>Pending for approvals</p>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-xs align="center">
+                            <span class="kbit-screen-title">{{application.lastMonth}}</span>
+                            <p>Applications in last one month</p>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-xs align="center">
+                            <span class="kbit-screen-title">{{application.lastMonth}}</span>
+                            <p>Average applications per month</p>
+                        </md-input-container>
+                    </div>
+                </md-card-content>
+            </md-card>
+        </div>
+    </md-content>
+    <md-content class="md-padding kbit-card" layout-xs="column" layout="row">
+        <div flex-xs="" flex-gt-xs="100" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                <md-card-content>
+                    <div layout-gt-xs="row">
+                        <md-input-container class="md-block" flex-gt-xs>
+                            <span class="kbit-screen-title">Applications </span>
+                        </md-input-container>
+                    </div>
+                    <div layout-gt-xs="row">
+                        <md-input-container class="md-block" flex-gt-xs>
+                            <p>Draft(with Startup users): {{ countOfRecords.Draft+countOfRecords.Welcome }}</p>
+                            <p>Send back to Startup Users: {{ countOfRecords.UserAction }}</p>
+                            <p><a href ng-click="goToCategory('Submit')">With Relationship Manager: </a>{{ countOfRecords.Submit }}
+                            </p>
+                            <p><a href ng-click="goToCategory('Stage3')">With Senior Manager: </a>{{ countOfRecords.Stage3 }}</p>
+                            <p><a href ng-click="goToCategory('Stage4')">With Nodal Officer: </a>{{ countOfRecords.Stage4 }}</p>
+                            <p><a href ng-click="goToCategory('Stage5')">With MD: </a>{{ countOfRecords.Stage5 }}</p>
+                            <p><a href ng-click="goToCategory('Approved')">Approved by MD: </a>{{ countOfRecords.Approved }}</p>
+                            <p><a href ng-click="goToCategory('Certificate_issued')">Certificate Issued: </a>{{ countOfRecords.Certificate_issued }}
+                            </p>
+                            <p><a href ng-click="goToCategory('Rejected')">Rejected: </a>{{ countOfRecords.Rejected }}</p>
+                        </md-input-container>
+                        <md-input-container flex-gt-xs style="margin-top:-4%; margin-left:15%">
+                            <nvd3-pie-chart data="exampleData1" id="donutRatioExample1" width="300" x="xFunction()" y="yFunction()" donut="true" showLabels="true" donutRatio=".25">
+                                <svg height="250"></svg>
+                            </nvd3-pie-chart>
+                        </md-input-container>
+                    </div>
+                </md-card-content>
+            </md-card>
+        </div>
+    </md-content>
+    <md-content class="md-padding kbit-card" layout-xs="column" layout="row">
+        <div flex-xs="" flex-gt-xs="100" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                <md-tabs md-dynamic-height="" md-border-bottom="">
+                    <md-content class="md-padding" style="background-color: white">
+                        <md-content data-ng-if="userInfo.type == 'MD'" class="md-padding" style="background-color: white">
+                            <md-tab md-active="true" label="Waiting for {{userInfo.type}}" ng-click="getStartupFormByState()">
+                                <div layout-gt-xs="row">
+                                    <md-input-container class="md-block" flex-gt-xs>
+                                        <table class="table table-hover table-responsive">
+                                            <tbody>
+                                                <tr ng-repeat="startup in startups" ng-click="startupDetails(startup._id)" class="pointer-hover">
+                                                    <td>
+                                                        <a href>{{startup.basic_details.name}}, {{startup.technology_usage.area_of_operation}}</a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </md-input-container>
+                                </div>
+                            </md-tab>
+                        </md-content>
+                        <md-content data-ng-if="userInfo.type != 'MD'" class="md-padding" style="background-color: white">
+                            <md-tab md-active="true" label="Waiting for {{userInfo.type}} Manager" ng-click="getStartupFormByState()">
+                                <div layout-gt-xs="row">
+                                    <md-input-container class="md-block" flex-gt-xs>
+                                        <table class="table table-hover table-responsive">
+                                            <tbody>
+                                                <tr ng-repeat="startup in startups" ng-click="startupDetails(startup._id)" class="pointer-hover">
+                                                    <td>
+                                                        <a href>{{startup.basic_details.name}}, {{startup.technology_usage.area_of_operation}}</a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </md-input-container>
+                                </div>
+                            </md-tab>
+                        </md-content>
+                        <!--<md-tab label="Total Applications" ng-click="getStartupFormByState('all')">
+                        <md-content class="md-padding" style="background-color: white">
+                            <div layout-gt-xs="row">
+                                <md-input-container class="md-block" flex-gt-xs>
+                                    <table class="table table-hover table-responsive">
+                                        <tbody>
+                                            <tr ng-repeat="startup in startups" ng-click="startupDetails(startup._id)" class="pointer-hover">
+                                                <td>
+                                                    <a href>{{startup.basic_details.name}}, {{startup.technology_usage.area_of_operation}}</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </md-input-container>
+                            </div>
+                        </md-content>
+                    </md-tab>-->
+                        <md-tab ng-if="userInfo.type == 'Relationship'" label="Assigned to me" ng-click="getStartupFormByAssignee('Submit')">
+                            <md-content class="md-padding" style="background-color: white">
+                                <div layout-gt-xs="row">
+                                    <md-input-container class="md-block" flex-gt-xs>
+                                        <table class="table table-hover table-responsive">
+                                            <tbody>
+                                                <tr ng-repeat="startup in startups" ng-click="startupDetails(startup._id)" class="pointer-hover">
+                                                    <td>
+                                                        <a href>{{startup.basic_details.name}}, {{startup.technology_usage.area_of_operation}}</a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </md-input-container>
+                                </div>
+                            </md-content>
+                        </md-tab>
+                        <md-tab ng-if="userInfo.type == 'Relationship'" label="Certificate Issue" ng-click="getStartupFormByAssignee('Approved')">
+                            <md-content class="md-padding" style="background-color: white">
+                                <div layout-gt-xs="row">
+                                    <md-input-container class="md-block" flex-gt-xs>
+                                        <table class="table table-hover table-responsive">
+                                            <tbody>
+                                                <tr ng-repeat="startup in startups" ng-click="startupDetails(startup._id)" class="pointer-hover">
+                                                    <td>
+                                                        <a href>{{startup.basic_details.name}}, {{startup.technology_usage.area_of_operation}}</a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </md-input-container>
+                                </div>
+                            </md-content>
+                        </md-tab>
+                        <!--<md-tab label="Open House">
+                        <md-content class="md-padding">
+                            <div class="eq-large-bottom-margin-offset">
+                                <span class="kbit-help-text">Click any application to see its details and process it  </span>
+                            </div>-->
+                        <!--<div ng-repeat="startup in startups">
+                                <a href ng-click="startupDetails(startup._id)">{{startup.basic_details.name}}, {{startup.technology_usage.area_of_operation}}</a>
+                            </div>-->
+                        <!--</md-content>
+                    </md-tab>-->
+                </md-tabs>
+            </md-card>
+        </div>
+        </md-content>
+</div>

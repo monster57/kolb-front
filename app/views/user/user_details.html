@@ -1,0 +1,244 @@
+<div id="body">
+	<md-content class="md-padding " layout-xs="column" layout="row">
+		<div flex-xs="" flex-gt-xs="70" layout="column">
+
+			<div ng-include="'/kbitsApp/views/user/submitted_details.html'"></div>
+		</div>
+		<div flex-xs="" flex-gt-xs="30" layout="column">
+
+			<md-card class="kbits-background" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+				<md-card-content>
+					<div layout-gt-xs="row">
+						<md-input-container class="md-block">
+							<span class="kbit-screen-title">Work Flow </span>
+						</md-input-container>
+					</div>
+					<div style="overflow:hidden">
+						<div layout-gt-xs="row">
+							<md-list>
+								<md-list-item class=" md-2-line" ng-repeat="stage in startupData.stage | orderBy: 'date' : true" ng-if="stage.designation != 'User'">
+									<div class="md-list-item-text" layout="column">
+										<span class="kbit-label">{{stage.designation}} </span>
+										<span class="kbit-pre-color">{{stage.message }} {{ stage.changed_by}} on {{stage.time | date:dd-MM-yyyy}}</span>
+										<span layout="row" ng-if="stage.designation != 'Startup user' && stage.designation != 'User' && stage.contentType == 'UserAction'">
+										<span  class="kbit-help-text">Reason: &nbsp;</span> {{ startupData.reason_for_send_to_user }}
+										</span>
+
+									</div>
+								</md-list-item>
+							</md-list>
+						</div>
+					</div>
+					{{ state }}
+					<md-card-actions layout="row">
+						<div flex>
+							<div class="dropdown" flex="nogrow">
+								<md-button ng-disabled='!isCurrentState' class="md-raised md-primary" data-toggle="dropdown">Action
+									<span class="caret"></span></md-button>
+								<ul class="dropdown-menu">
+									<li value="state.transition" ng-repeat="state in states"><a href="#" ng-click="set_state(state, startupData, reason_rejection)">{{state.button}}</a></li>
+								</ul>
+							</div>
+						</div>
+
+					</md-card-actions>
+					<div ng-if="startup_state.transition == 'Rejected'">
+						<md-input-container class="md-block">
+							<span class="kbit-label">Reason for rejection </span>
+							<!--<label style="overflow: auto; resize:none">Please provide a reason for Rejection </label>-->
+							<textarea ng-model="reason_rejection" aria-label="Follow" md-maxlength="1000" rows="2" md-select-on-focus="" required></textarea>
+							<md-button type="submit" class="md-raised md-primary" aria-label="Follow" ng-click="acceptOrRejectForm(startupData, startup_state, reason_rejection)">Send</md-button>
+						</md-input-container>
+					</div>
+					<div ng-if="startup_state.transition == 'UserAction'">
+						<md-input-container class="md-block">
+							<span class="kbit-label">Reason for sending back to user</span>
+							<!--<label style="overflow: auto; resize:none">Please provide a reason for Rejection </label>-->
+							<textarea ng-model="reason_for_sending_to_user" aria-label="Follow" md-maxlength="1000" rows="2" md-select-on-focus="" required></textarea>
+							<md-button type="submit" class="md-raised md-primary" aria-label="Follow" ng-click="acceptOrRejectForm(startupData, startup_state, reason_for_sending_to_user)">Send</md-button>
+						</md-input-container>
+					</div>
+				</md-card-content>
+			</md-card>
+			<div class="virtualRepeatdemoVerticalUsage" layout="column">
+				<md-card class="kbits-background" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+					<md-card-content>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block">
+								<span class="kbit-screen-title">Comments on this Application</span>
+							</md-input-container>
+						</div>
+
+						<md-virtual-repeat-container id="vertical-container" class="eq-large-bottom-margin-offset">
+							<div md-virtual-repeat="comment in startupData.comments | orderBy: 'date' : true" class="repeated-item" flex="">
+								<span style="text-transform: capitalize"> <b>{{comment.name}}</b></span>:
+								<br/>
+								<span class="kbit-label eq-large-bottom-margin-offset">{{comment.date | date:'EEE MMM dd yyyy HH:mm:ss'}}</span>
+								<br/>
+								<span class="eq-large-bottom-margin-offset">{{comment.text}}</span>
+							</div>
+						</md-virtual-repeat-container>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" flex-gt-xs>
+								<textarea data-ng-model="comment.text" placeholder="Add Your Comment" rows="4" md-select-on-focus=""></textarea>
+							</md-input-container>
+						</div>
+						<div class="eq-large-bottom-margin-offset" layout-gt-xs="row" layout-align="end center">
+							<md-button type="submit" class="md-raised md-primary" ng-click="insert()">
+								Comment
+							</md-button>
+						</div>
+					</md-card-content>
+				</md-card>
+			</div>
+
+			<!-- <md-card class="kbits-background" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+				<md-card-content>
+					<div layout-gt-xs="row">
+						<md-input-container class="md-block">
+							<span class="kbit-screen-title">Payment </span>
+						</md-input-container>
+					</div>
+					<div ng-show="startupData.processingFees">
+						<p> The Fees of Rs {{startupData.processingFees.processingFeeCollected}} has been collected on {{startupData.processingFees.processingFeeCollectedDate|
+							date: 'dd-MM-yyyy'}}</p>
+					</div>
+					<div ng-show="!startupData.processingFees">
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" flex-gt-xs>
+								<label>Payment amount: (in Rs)</label>
+								<input type="number" ng-model="amount" md-select-on-focus="" required>
+							</md-input-container>
+						</div>
+
+						<div layout-gt-xs="row" class="eq-large-bottom-margin-offset">
+							<label class="kbit-label">Payment Date: </label>
+						</div>
+						<div layout-gt-xs="row">
+							<md-datepicker type='date' is-open="focus" ng-model="processing_date" md-placeholder="Payment date" required></md-datepicker>
+						</div>
+						<br/>
+						<div class="eq-large-bottom-margin-offset" layout-gt-xs="row">
+
+							<md-button type="submit" ng-disabled="!(startupData.rm_assignee.assignee_id == userInfo._id)" class="md-raised md-primary"
+								ng-click="savePayment(startupData._id)">
+								Save
+							</md-button>
+						</div>
+					</div>
+				</md-card-content>
+			</md-card> -->
+		</div>
+	</md-content>
+	<div flex-xs="" flex-gt-xs="100" layout="column">
+		<md-card class="kbits-background" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+			<md-card-content>
+				<div layout-gt-xs="row">
+					<md-input-container class="md-block">
+						<span class="kbit-screen-title">Checklist</span>
+					</md-input-container>
+				</div>
+
+				<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<div>
+								<table class="table table-hover kbit-checklist table-responsive">
+									<thead>
+										<tr>
+											<th>
+
+											</th>
+											<th>
+												Item
+											</th>
+											<th>
+												Value from Application
+											</th>
+											<th>
+												Verified
+											</th>
+											<th>
+												Against Document
+											</th>
+											<th>
+												Remarks
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="pointer-hover" ng-repeat="lists in checklist.listItems">
+											<td>
+												{{lists.id}}
+											</td>
+											<td>
+												<p>{{lists.name}}</p>
+												<p class="kbit-help-text">{{lists.helpText}}</p>
+											</td>
+											<td>
+												{{lists.value}}
+											</td>
+											<td>
+												<i class="fa fa-question kbit-active-button active" value="checklist.verified" ng-if="!lists.verified" ng-click="changeStatus(lists);"></i>
+												<i class="fa fa-check kbit-active-button inactive" value="checklist.verified" ng-if="lists.verified" ng-click="changeStatus(lists);"></i>
+											</td>
+											<td>
+												<md-input-container class="md-block" flex-gt-sm style="line-height: 31px;">
+													<md-select aria-label="Follow" ng-model="lists.againstDocument">
+														<md-option ng-repeat="doc_lists in doc_list" ng-value="doc_lists._id">{{doc_lists.name}}</md-option>
+													</md-select>
+												</md-input-container>
+											</td>
+											<td>
+												<md-input-container class="md-block" flex-gt-xs style="margin: 0px !important;">
+													<textarea aria-label="remark" md-maxlength="500" rows="2" md-select-on-focus="" ng-model="lists.remark" required></textarea>
+												</md-input-container>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div layout-gt-xs="row" layout-align="center center">
+									<div ng-if="userInfo.type == 'Relationship' && startupData.rm_assignee && currentState == 'Submit' && startupData.rm_assignee.assignee_id == userInfo._id">
+										<md-button type="submit" class="md-raised md-primary" ng-click="check(checklist)">
+											Save
+										</md-button>
+									</div>
+								</div>
+								<div layout-gt-xs="row" layout-align="center center">
+									<div ng-if="!startupData.rm_assignee || (currentState == 'Submit' && startupData.rm_assignee && startupData.rm_assignee.assignee_id != userInfo._id)">
+										<md-button layout-align="center center" type="submit" class="md-raised md-primary" ng-disabled="true">
+											Save
+										</md-button>
+									</div>
+								</div>
+								<div layout-align="center center" layout-gt-xs="row" ng-if="userInfo.type == 'Nodal'">
+									<i class="fa fa-question kbit-active-button active" value="verified_by_nodal" ng-if="!verified_by_nodal" ng-click="checkedBy(verified_by_nodal , 'nodal')"></i>
+									<i class="fa fa-check kbit-active-button inactive" value="verified_by_nodal" ng-if="verified_by_nodal" ng-click="checkedBy(verified_by_nodal , 'nodal')"></i>									&nbsp; Reviewed by Nodal Manager
+								</div>
+								<div layout-align="center center" layout-gt-xs="row" ng-if="userInfo.type != 'Nodal'">
+									<i class="fa fa-question kbit-active-button active" value="verified_by_nodal" ng-if="!verified_by_nodal"></i>
+									<i class="fa fa-check kbit-active-button inactive" value="verified_by_nodal" ng-if="verified_by_nodal"></i> &nbsp;
+									Reviewed by Nodal Manager
+								</div>
+								<div layout-align="center center" layout-gt-xs="row" ng-if="userInfo.type == 'MD'">
+									<i class="fa fa-question kbit-active-button active" value="verified_by_md" ng-if="!verified_by_md" ng-click="checkedBy(verified_by_md , 'md')"></i>
+									<i class="fa fa-check kbit-active-button inactive" value="verified_by_md" ng-if="verified_by_md" ng-click="checkedBy(verified_by_md , 'md' )"></i>									&nbsp; Reviewed by MD
+								</div>
+								
+								<div layout-align="center center" layout-gt-xs="row" ng-if="userInfo.type != 'MD'">
+									<i class="fa fa-question kbit-active-button active" value="verified_by_md" ng-if="!verified_by_md"></i>
+									<i class="fa fa-check kbit-active-button inactive" value="verified_by_md" ng-if="verified_by_md"></i> &nbsp; Reviewed
+									by MD
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</md-input-container>
+				<md-card-actions layout="row" layout-align="center center">
+					<a href="#" ng-click="goHome()">Home</a>
+				</md-card-actions>
+			</md-card-content>
+		</md-card>
+	</div>
+</div>

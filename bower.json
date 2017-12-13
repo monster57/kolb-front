@@ -1,0 +1,46 @@
+{
+  "name": "kbitsApp",
+  "version": "1.1.7",
+  "description": "Description goes here",
+  "main": "app.js",
+  "keywords": [
+    "angularjs"
+  ],
+  "license": "MIT",
+  "homepage": "https://bitbucket.com/eqtribe1/kbits-frontend",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.5",
+    "angular-sanitize": "~1.5.5",
+    "angular-cookies": "~1.5.5",
+    "toastr": "~2.1.2",
+    "angular-dialog-service": "~5.3.0",
+    "angular-material": "^1.0.4",
+    "jquery": "^2.2.0",
+    "checklist-model": "^0.9.0",
+    "angular-ui-date": "^1.0.1",
+    "angular-ui-router": "^0.2.18",
+    "angularjs-dropdown-multiselect": "^1.5.2",
+    "components-font-awesome": "^4.6.1",
+    "angular-bootstrap": "^1.3.2",
+    "bootstrap": "^3.3.6",
+    "angular-loading-bar": "^0.9.0",
+    "moment": "^2.13.0",
+    "eonasdan-bootstrap-datetimepicker": "4.15.35",
+    "bootstrap-select": "^1.10.0",
+    "angularjs-nvd3-directives": "^0.0.7",
+    "angular-material-data-table": "^0.10.9"
+  },
+  "resolutions": {
+    "jquery": "^2.2.0",
+    "angular": "^1.5.6",
+    "d3": "~3.4.1"
+  }
+}

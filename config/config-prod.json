@@ -1,0 +1,13 @@
+{ "CONSTANTS":
+  {
+    "API_URL": "http://ec2-52-45-117-90.compute-1.amazonaws.com:1337",
+    "backendUrl": "http://ec2-52-45-117-90.compute-1.amazonaws.com:1337",
+    "host": "ec2-52-45-117-90.compute-1.amazonaws.com",
+    "ports": "3001",
+    "AccessLevels": {
+        "anon": "FPO-FIELD",
+        "user": "FPO-MGMT",
+        "admin": "ADMIN"
+    }
+  }
+}

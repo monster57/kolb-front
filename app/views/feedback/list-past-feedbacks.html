@@ -1,0 +1,30 @@
+<div class="eq-screen-header eq_bg_accent">
+    <div class="row">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+            <div >{{$state.current.data.screen_title}}</div>
+        </div>
+    </div>
+</div>
+<div class="eq-content-container">
+    <div class="row">
+        <div class="col-md-8 col-sm-8 col-xs-8 col-lg-8">
+            <p class="eq-guiding-text">Select feedback for details</p>
+        </div>
+    </div>
+</div>
+<uib-accordion >
+    <uib-accordion-group class="eq-accordion" is-open="status.isFirstOpen">
+        <uib-accordion-heading>
+            <span style="color:white;"><b>feedbacks in past</b> </span>
+        </uib-accordion-heading>
+        <div class="list-group eq-list-group" ng-repeat="pastFeedbackList in pastFeedbackLists">
+			<a ui-sref="none" class="list-group-item">
+				<p class="list-group-item-text eq-list-item-header">{{pastFeedbackList.subject}}, {{pastFeedbackList.created_on | date: 'dd-MM-yyyy'}}</p>
+				<p class="list-group-item-text"><abbr class="eq-field-label">Feedback Type: </abbr>{{ pastFeedbackList.feedback_type }}</p>
+                <p class="list-group-item-text"><abbr class="eq-field-label">User Priority: </abbr>{{ pastFeedbackList.user_priority }}</p>
+                <p class="list-group-item-text"><abbr class="eq-field-label">Status: </abbr>{{ pastFeedbackList.status }}</p>
+                <p class="list-group-item-text"><abbr class="eq-field-label">Feedback: </abbr>{{ pastFeedbackList.feedback }}</p>
+	       	</a>
+		</div>
+    </uib-accordion-group>
+</uib-accordion>

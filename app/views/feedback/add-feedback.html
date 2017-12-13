@@ -1,0 +1,41 @@
+
+        <div class="eq-screen-header eq_bg_accent row">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                <div>{{$state.current.data.screen_title}}</div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <div class="pull-right">
+                    <button class="btn btn-default eq-glyph-btn btn_text" ng-click="addFeedback()"><i class="fa fa-check"></i></button>
+                    <button type="button" class="btn btn-default eq-glyph-btn btn_text novalidate" ng-click="goBack()"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="eq-content-container">
+            <div class="eq-guiding-text">We continuously improve the product based on your feedbacks and the issues you report to us.</div>
+            <div class="row">
+                <div class="col-sm-6 eq-col-bottom-margin-offset">
+                    <label for="feedbacktype" class="eq-field-label">I want to</label>
+		            <select class="form-control eq-input-text-box" name="feedbacktype" id="feedbacktype" ng-model="feedback.feedbackType" required >
+		                <option ng-repeat="feedbacktype in feedbacktypes" value="{{ feedbacktype.code }}" 
+                               > {{ feedbacktype.name }} </option>
+		            </select>
+                </div>
+                <div class="col-sm-6 eq-col-bottom-margin-offset">
+			        <label for="userprioritytype" class="eq-field-label">For me this issue is</label>
+                    <select class="form-control eq-input-text-box" name="userprioritytype" id="userprioritytype" ng-model="feedback.userPriorityType">
+                        <option ng-repeat="userprioritytype in userprioritytypes" value="{{ userprioritytype.code }}"> {{ userprioritytype.name }} </option>
+			        </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 eq-col-bottom-margin-offset">
+                    <label class="eq-field-label">Feedback subject</label>
+				    <input  class="form-control eq-input-textarea-box"  id="exampleTextarea1" placeholder="Feedback for {{ST}} screen" ng-model="feedback.subject"/>
+                </div>
+                <div class="col-sm-6 eq-col-bottom-margin-offset">
+                    <label class="eq-field-label">Description</label>
+				    <textarea class="form-control eq-input-textarea-box" id="exampleTextarea" rows="4" placeholder="" ng-model="feedback.feedback"></textarea>
+                </div>
+            </div>
+            <button class="btn btn-primary" ng-click="pastFeedbackList()">Show My Previous Feedbacks</button>
+   

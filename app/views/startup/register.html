@@ -1,0 +1,969 @@
+<div id="body">
+    <div class="kbit-content-box" ng-include="'/kbitsApp/views/templates/startupHeader.html'">
+    </div>
+    <div class="row">
+        <div class=" col-md-2">
+            <ul class="nav nav-pills kbit-nav-bk-color nav-stacked">
+                <li ng-class="{ active: isSet(1) }"><a href ng-click="setTab(1)">Technology & Sector <i ng-class='isFilled("technology_use")'></i> </a>
+                    <div class="text-center" style="font-size:small;color:red;" ng-if="technology_use.$dirty">
+                        Click Save at the bottom
+                    </div>
+                </li>
+                <li ng-class="{ active: isSet(2) }"><a href ng-click="setTab(2)">Company <i ng-class='isFilled("company_record")'></i> </a>
+                    <div class="text-center" style="font-size:small;color:red;" ng-if="company_record.$dirty">
+                        Click Save at the bottom
+                    </div>
+                </li>
+                <li ng-class="{ active: isSet(3) }"><a href ng-click="setTab(3)">Financial <i ng-class='isFilled("financial_information_form")'></i> </a>
+                    <div class="text-center" style="font-size:small;color:red;" ng-if="financial_information_form.$dirty">
+                        Click Save at the bottom
+                    </div>
+                </li>
+                <li ng-class="{ active: isSet(4) }"><a href ng-click="setTab(4)">Employees <i ng-class='isFilled("employee_info")'></i> </a>
+                    <div class="text-center" style="font-size:small;color:red;" ng-if="employee_info.$dirty">
+                        Click Save at the bottom
+                    </div>
+                </li>
+                <li ng-class="{ active: isSet(5) }"><a href ng-click="setTab(5)">Self Certificates<i ng-class='isFilled("self_certificate_form")'></i> </a>
+                    <div class="text-center" style="font-size:small;color:red;" ng-if="self_certificate_form.$dirty">
+                        Click Save at the bottom
+                    </div>
+                </li>
+                <li ng-class="{ active: isSet(6) }"><a href ng-click="setTab(6)">Detailed Background <i ng-class='isFilled("detailed_background_form")'></i> </a>
+                    <div class="text-center" style="font-size:small;color:red;" ng-if="detailed_background_form.$dirty">
+                        Click Save at the bottom
+                    </div>
+                </li>
+                <li ng-class="{ active: isSet(7) }"><a href ng-click="setTab(7)">Promotion<i ng-class='isFilled("promotion_form")'></i> </a>
+                    <div class="text-center" style="font-size:small;color:red;" ng-if="promotion_form.$dirty">
+                        Click Save at the bottom
+                    </div>
+                </li>
+                <li ng-class="{ active: isSet(8) }"><a href ng-click="setTab(8)">Incubation Details<i ng-class='isFilled("incubator_detail")'></i> </a>
+                    <div class="text-center" style="font-size:small;color:red;" ng-if="incubator_detail.$dirty">
+                        Click Save at the bottom
+                    </div>
+                </li>
+                <li ng-class="{ active: isSet(9) }"><a href ng-click="setTab(9)">Annexure<i ng-class='isFilled("annexure_form")'></i> </a></li>
+                <li ng-class="{ active: isSet(10) }"><a href ng-click="setTab(10)">Other Documents </a>
+                    <div class="text-center" style="font-size:small;color:red;" ng-if="additional_form.$dirty">
+                        Click Save at the bottom
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- <form name="masterForm"> -->
+        <div class="col-md-10">
+            <form id="technology_usage-form" name="technology_use" ng-submit="technology_use.$valid && registerStartup({'technology_usage':technology_usage},2 , 'technology_use')">
+                <div ng-show="isSet(1)">
+                    <md-content class="md-padding" style="margin-right: 24%; margin-left:4%" layout-xs="column" layout="row">
+                        <div flex-xs="" flex-gt-xs="100" layout="column">
+                            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                                <md-card-content>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>Area Of Operation</label>
+                                            <md-select data-ng-model="technology_usage.area_of_operation" required>
+                                                <md-option ng-repeat="area in area_of_operations" ng-value="area">{{area}}</md-option>
+                                            </md-select>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>How does your startup use
+                                                <span class="md-text-button" aria-label="refresh">
+															<md-tooltip md-direction="top">
+																The facilitation under this policy is intended<br>
+															    for only technology based startup, i.e. one that<br>
+																creates a technology based service or product or <br>
+																uses technology for enhancing functionality or reach<br> of an existing product or service.
+															</md-tooltip>
+												technology*</span> to enhance your business </label>
+                                            <textarea ng-model="technology_usage.technology" md-maxlength="5000" rows="2" md-select-on-focus="" required></textarea>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>Is it a Product Company </label>
+                                            <textarea ng-model="technology_usage.is_product_company" md-maxlength="5000" rows="2" md-select-on-focus="" required></textarea>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>Is it a Service Company </label>
+                                            <textarea ng-model="technology_usage.is_service_company" md-maxlength="5000" rows="2" md-select-on-focus="" required></textarea>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>Brief Company Profile</label>
+                                            <textarea ng-model="technology_usage.company_profile" md-maxlength="5000" rows="2" md-select-on-focus="" required></textarea>
+                                        </md-input-container>
+                                    </div>
+                                    <div class="eq-large-bottom-margin-offset" layout-gt-xs="row" layout-align="center center">
+                                        <md-button type="submit" class="md-raised md-primary">
+                                            <div>
+                                                Save
+                                            </div>
+                                        </md-button>
+                                    </div>
+                                </md-card-content>
+                            </md-card>
+                        </div>
+                    </md-content>
+                </div>
+            </form>
+            <form id="company_records-form" name="company_record" ng-submit="company_record.$valid && registerStartup({'company_records':company_records},3 , 'company_record')">
+                <div ng-show="isSet(2)">
+                    <md-content class="md-padding " style="margin-right: 24%; margin-left:4%" layout-xs="column" layout="row">
+                        <div flex-xs="" flex-gt-xs="100" layout="column">
+                            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                                <md-card-content>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <md-radio-group ng-model="company_records.undertaking_status" layout="row" md-select-on-focus="" required>
+                                                <lable class="kbit-label"><b>Status Of Company:</b> </lable>
+                                                &nbsp;
+                                                <md-radio-button value="Partnership">Partnership</md-radio-button>
+                                                <md-radio-button value="OPC"> OPC </md-radio-button>
+                                                <md-radio-button value="Private Limited Company">Private Limited Company</md-radio-button>
+                                                <md-radio-button value="Other">Other</md-radio-button>
+                                            </md-radio-group>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <label class="kbit-label">Date of Commercial Operation </label>
+                                    </div>
+                                    <div layout-gt-xs="row ">
+                                        <md-datepicker class="kbit-calendar eq-large-bottom-margin-offset" type='date' is-open="focus" ng-model="company_records.commercial_commencement_date" md-placeholder="Date of Commercial Operation" required></md-datepicker>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>No. of Establishments/Branches/Offices </label>
+                                            <input ng-model="company_records.number_of_branches" allow-pattern="^[0-9]*$" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <label class="kbit-label">Date of Incorporation </label>
+                                    </div>
+                                    <div layout-gt-xs="row" class="eq-large-bottom-margin-offset">
+                                        <md-datepicker type='date' class="kbit-calendar" ng-model="company_records.incorporation_date" md-placeholder="Date of Incorporation" required></md-datepicker>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>Incorporation Number</label>
+                                            <input type="text" ng-model="company_records.encorporation_number" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>PAN Number</label>
+                                            <input type="text" ng-model="company_records.PAN_number" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>Statutory Licence</label>
+                                            <input type="text" ng-model="company_records.statutory_licence" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row eq-row-bottom-margin-offset">
+                                        <label class="kbit-label eq-row-bottom-margin-offset"> Upload Incorporation Certificate</label>&nbsp;
+                                        <span class="kbit-help-text eq-row-bottom-margin-offset">(file size should be less than 2MB, PDF, DOC, DOCX, JPG, PNG formats)</span>
+                                        <br/>
+                                    </div>
+                                    <br/>
+                                    <div layout="column">
+                                        <span class="" ng-repeat="file in startupFile.incorporation" ng-model="file">
+												<div flex="33" layout="row" class="eq-row-bottom-margin-offset eq-medium-top-margin-offset" layout-wrap>
+                                                <input type="file" onchange="angular.element(this).scope().uploadSingleFile(this, 'incorporation' )" style="color:transparent; margin-right:-20%" >
+												<div flex="33" ng-if="file.name">{{file.name}}</div>
+
+												<a href="#" ng-if="startupFile.incorporation.length > (startupFile.incorporation.indexOf(file) + 1 )"
+												ng-click="removeFile(file , $index, 'incorporation')" style="margin-left:10%">Remove</a>
+                                                 </div>
+											</span>
+                                    </div>
+                                    <div layout-gt-xs="row" layout-align="center center">
+                                        <md-button type="submit" class="md-raised md-primary">
+                                            <div>
+                                                Save
+                                            </div>
+                                        </md-button>
+                                    </div>
+                                </md-card-content>
+                            </md-card>
+                        </div>
+                    </md-content>
+                </div>
+            </form>
+            <form id="financial-information" name="financial_information_form" ng-submit="financial_information_form.$valid && registerStartup({'financial_information':finantialData},4 , 'financial_information_form')">
+                <div ng-show="isSet(3)">
+                    <md-content class="md-padding " style="margin-right: 24%;margin-left:4%" layout-xs="column" layout="row">
+                        <div flex-xs="" flex-gt-xs="100" layout="column">
+                            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                                <md-card-content>
+                                    <div class="eq-row-bottom-margin-offset">
+                                        <span class="kbit-help-text ">Financial Indicators of the Company/Firm (Last 3 Years in Rs.Crores)</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="eq-large-bottom-margin-offset">
+                                                <table class="table table-hover table-responsive">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>
+                                                                Year
+                                                            </th>
+                                                            <th>
+                                                                Profit Before Tax (INR)
+                                                            </th>
+                                                            <th>
+                                                                Net Worth (INR)
+                                                            </th>
+                                                            <th>
+                                                                Reserves and Surplus (INR)
+                                                            </th>
+                                                            <th>
+                                                                Revenue (INR)
+                                                            </th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="pointer-hover" ng-repeat="x in finantialData.indicators">
+                                                                <td>
+                                                                    <div class='ieq-input-text-box' style="width: 95px" id='datetimepicker1'>
+                                                                        <input type='text' ng-readonly="true" style="width: 100%" ng-model="x.year" class="form-control" />
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <input class="eq-input-text-box" style="width: 90%" ng-model="x.profit_before_tax" md-select-on-focus="">
+                                                                </td>
+                                                                <td>
+                                                                    <input class="eq-input-text-box" style="width: 90%" ng-model="x.net_worth" md-select-on-focus="">
+                                                                </td>
+                                                                <td>
+                                                                    <input class="eq-input-text-box" style="width: 90%" ng-model="x.reserves_surplus" md-select-on-focus="">
+                                                                </td>
+                                                                <td>
+                                                                    <input class="eq-input-text-box" style="width: 90%" ng-model="x.revenue" md-select-on-focus="">
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                </table>
+                                                <div class="checkbox-inline eq-large-bottom-margin-offset">
+                                                    <input type="checkbox" ng-model="finantialData.check" required> &nbsp; I acknowledge above information is correct
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div layout-gt-xs="row eq-row-bottom-margin-offset">
+                                        <label class="kbit-label eq-row-bottom-margin-offset"> Upload Financial Certificate</label>
+                                        <span class="kbit-help-text eq-row-bottom-margin-offset">(file size should be less than 2MB, PDF, DOC, DOCX, JPG, PNG formats)</span>
+                                        <br/>
+                                        <span class="kbit-help-text eq-row-bottom-margin-offset">Annual Reports/Balance Sheet/Annual Salary/Profit and Loss Account Statement for last 3 years duly certified by a registered Chartered Accountant/statutory auditor to be attached</span>
+                                    </div>
+                                    <br/>
+                                    <div layout="column">
+                                        <span class="" ng-repeat="file in startupFile.financial" ng-model="file">
+												<div flex="33" layout="row" class="eq-row-bottom-margin-offset eq-medium-top-margin-offset" layout-wrap>
+                                                <input type="file" onchange="angular.element(this).scope().uploadSingleFile(this, 'financial' )" style="color:transparent; margin-right:-20%" >
+												<div flex="33" ng-if="file.name">{{file.name}}</div>
+												<a href="#" ng-if="startupFile.financial.length > (startupFile.financial.indexOf(file) + 1 )"
+												ng-click="removeFile(file , $index, 'financial')" style="margin-left:10%">Remove</a>
+                                                 </div>
+											</span>
+                                    </div>
+                                    <div layout-gt-xs="row" layout-align="center center">
+                                        <md-button type="submit" class="md-raised md-primary">
+                                            <div>
+                                                Save
+                                            </div>
+                                        </md-button>
+                                    </div>
+                                </md-card-content>
+                            </md-card>
+                        </div>
+                    </md-content>
+                </div>
+            </form>
+            <form id="employee-information-form" name="employee_info" ng-submit="employee_info.$valid && registerStartup({'emp_info':emp_info},5 , 'employee_info')">
+                <div ng-show="isSet(4)">
+                    <md-content class="md-padding " style="margin-right: 24%; margin-left:4%" layout-xs="column" layout="row">
+                        <div flex-xs="" flex-gt-xs="100" layout="column">
+                            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                                <md-card-content>
+                                    <div class="eq-row-bottom-margin-offset">
+                                        <span class="kbit-help-text ">Please see definition of <span class="md-text-button" aria-label="refresh">
+															<md-tooltip md-direction="top">
+																The term “qualified” has been defined as: “a formal
+																<br>
+																outcome of an assessment and validation process which<br>
+																is obtained when a competent body determines that an individual<br>
+																has achieved learning outcomes to given standards
+															</md-tooltip>
+												 qualified workforce*</span> workforce as per Karnataka Startup Policy 2015-2020</span>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>No. of permanent qualified workforce(Total) </label>
+                                            <input ng-model="emp_info.no_of_permanent_emp" allow-pattern="^[0-9]*$" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>No. of Women out of total qualified workforce</label>
+                                            <input type="text" ng-model="emp_info.no_of_women" allow-pattern="^[0-9]*$" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>No. of permanent qualified workforce in Karnataka</label>
+                                            <input type="text" ng-model="emp_info.no_of_permanent_qualified_workforce" allow-pattern="^[0-9]*$" md-select-on-focus="" required>
+                                        </md-input-container required>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>No. of Women out of the total qualified workforce in Karnataka</label>
+                                            <input type="text" ng-model="emp_info.no_of_qualified_women" allow-pattern="^[0-9]*$" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row" layout-align="center center">
+                                        <md-button type="submit" class="md-raised md-primary">
+                                            <div>
+                                                Save
+                                            </div>
+                                        </md-button>
+                                    </div>
+                                </md-card-content>
+                            </md-card>
+                        </div>
+                    </md-content>
+                </div>
+            </form>
+            <form id="self-certification-form" name="self_certificate_form" ng-submit="self_certificate_form.$valid && registerStartup({'self_cerfication':self_cerfication},6 , 'self_certificate_form')">
+                <div ng-show="isSet(5)">
+                    <!--  <md-content class="md-padding " style="margin-right: 24%;margin-left:4%" layout-xs="column" layout="row"> -->
+                    <div class="md-padding " style="margin-right: 24%;margin-left:4%" layout-xs="column" layout="row">
+                        <div flex-xs="" flex-gt-xs="100" layout="column">
+                            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                                <md-card-content>
+                                    <md-input-container class="md-block" flex-gt-xs>
+                                        <!--<div layout-gt-xs="row">
+											<div flex="20">
+												<md-switch class="md-primary" ng-model="self_cerfication.is_revenew_below_fifty_crores" aria-label="Switch 1" layout-wrap></md-switch>
+											</div>
+											<div flex="80" style="margin-top:20px">
+												<p>The applicant’s revenue is below 50Cr per annum: {{ self_cerfication.is_revenew_below_fifty_crores | YesNo}}</p>
+											</div>
+										</div>-->
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <md-radio-group ng-model="self_cerfication.is_revenew_below_fifty_crores" layout="row" required>
+                                                <div flex="80">
+                                                    <lable>The applicant’s revenue is below 50Cr per annum: </lable>
+                                                </div>
+                                                &nbsp;
+                                                <div flex="20">
+                                                    <md-radio-button ng-value="true" ng-style="{'display':'inline'}">Yes</md-radio-button>
+                                                    <md-radio-button ng-value="false" ng-style="{'display':'inline'}"> No </md-radio-button>
+                                                </div>
+                                            </md-radio-group>
+                                            <br/>
+                                            <!--<div layout-gt-xs="row">
+											<div flex="20">
+												<md-switch class="md-primary" style="width:100%" ng-model="self_cerfication.is_formed_by_dermeger" aria-label="Switch 1"
+													layout-wrap>
+												</md-switch>
+											</div>
+											<div flex="80" style="margin-top:20px">
+												<p>The applicant’s company has not been formed by demerger or reconstitution of an already existing business: {{
+													self_cerfication.is_formed_by_dermeger | YesNo }}</p>
+											</div>
+										</div>-->
+                                            <md-radio-group ng-model="self_cerfication.is_formed_by_dermeger" layout="row" required>
+                                                <div flex="80">
+                                                    <lable>The applicant’s company has not been formed by demerger or reconstitution of an already existing business: </lable>
+                                                </div>
+                                                &nbsp;
+                                                <div flex="20">
+                                                    <md-radio-button ng-style="{'display':'inline'}" ng-value="true">Yes</md-radio-button>
+                                                    <md-radio-button ng-style="{'display':'inline'}" ng-value="false"> No </md-radio-button>
+                                                </div>
+                                            </md-radio-group>
+                                            <br/>
+                                            <!--<div layout-gt-xs="row">
+											<div flex="20">
+												<md-switch class="md-primary" ng-model="self_cerfication.is_parent_company_is_a_startup" aria-label="Switch 1" layout-wrap>
+												</md-switch>
+											</div>
+											<div flex="80" style="margin-top:20px">
+												The applicant’s company is not a subsidiary company wherein the parent company is not a startup itself: {{ self_cerfication.is_parent_company_is_a_startup
+												| YesNo }}
+											</div>
+										</div>-->
+                                            <md-radio-group ng-model="self_cerfication.is_parent_company_is_a_startup" layout="row" required>
+                                                <div flex="80">
+                                                    <lable>The applicant’s company is not a subsidiary company wherein the parent company is not a startup itself: </lable>
+                                                </div>
+                                                &nbsp;
+                                                <div flex="20">
+                                                    <md-radio-button ng-style="{'display':'inline'}" ng-value="true">Yes</md-radio-button>
+                                                    <md-radio-button ng-style="{'display':'inline'}" ng-value="false"> No </md-radio-button>
+                                                </div>
+                                            </md-radio-group>
+                                            <br/>
+                                            <md-radio-group ng-model="self_cerfication.is_combined_entity_a_startup" layout="row" required>
+                                                <div flex="80">
+                                                    <lable>The applicant is not a merged entity wherein the combined entity is not a startup: </lable>
+                                                </div>
+                                                &nbsp;
+                                                <div flex="20">
+                                                    <md-radio-button ng-style="{'display':'inline'}" ng-value="true">Yes</md-radio-button>
+                                                    <md-radio-button ng-style="{'display':'inline'}" ng-value="false"> No </md-radio-button>
+                                                </div>
+                                            </md-radio-group>
+                                            <br/>
+                                            <!--<div layout-gt-xs="row">
+												<div flex="20">
+													<md-switch class="md-primary" ng-model="self_cerfication.is_franchisee_of_existing_business" aria-label="Switch 1" layout-wrap>
+													</md-switch>
+												</div>
+												<div flex="80" style="margin-top:20px">
+													The applicant is not a franchisee of an existing business: {{ self_cerfication.is_franchisee_of_existing_business | YesNo
+													}}
+												</div>
+											</div>-->
+                                            <md-radio-group ng-model="self_cerfication.is_franchisee_of_existing_business" layout="row" required>
+                                                <div flex="80">
+                                                    <lable>The applicant is not a franchisee of an existing business: </lable>
+                                                </div>
+                                                &nbsp;
+                                                <div flex="20">
+                                                    <md-radio-button ng-style="{'display':'inline'}" ng-value="true">Yes</md-radio-button>
+                                                    <md-radio-button ng-style="{'display':'inline'}" ng-value="false"> No </md-radio-button>
+                                                </div>
+                                            </md-radio-group>
+                                            <br/>
+                                            <!--<div layout-gt-xs="row">
+												<div flex="20">
+													<md-switch class="md-primary" ng-model="self_cerfication.is_application_promoted" aria-label="Switch 1" layout-wrap>
+													</md-switch>
+												</div>
+												<div flex="80" style="margin-top:20px">
+													The applicant is not promoted or sponsored by or related to an industrial group whose turnover exceeds INR 300 Cr. Per annum:
+													{{ self_cerfication.is_application_promoted | YesNo }}
+												</div>
+											</div>-->
+                                            <md-radio-group ng-model="self_cerfication.is_application_promoted" layout="row" required>
+                                                <div flex="80">
+                                                    <lable>The applicant is not promoted or sponsored by or related to an industrial group whose turnover exceeds INR 300 Cr. Per annum: </lable>
+                                                </div>
+                                                &nbsp;
+                                                <div flex="20">
+                                                    <md-radio-button ng-style="{'display':'inline'}" ng-value="true">Yes</md-radio-button>
+                                                    <md-radio-button ng-style="{'display':'inline'}" ng-value="false"> No </md-radio-button>
+                                                </div>
+                                            </md-radio-group>
+                                            <br/>
+                                            <!--<div layout-gt-xs="row">
+												<div flex="20">
+													<md-switch class="md-primary" ng-model="self_cerfication.is_not_a_holding_company" aria-label="Switch 1" layout-wrap>
+													</md-switch>
+												</div>
+												<div flex="80" style="margin-top:20px">
+													The applicant is not a holding company that derives more than 50% of its income from investments and loans: {{ self_cerfication.is_not_a_holding_company
+													| YesNo }}
+												</div>
+											</div>-->
+                                            <md-radio-group ng-model="self_cerfication.is_not_a_holding_company" layout="row" required>
+                                                <div flex="80">
+                                                    <lable>The applicant is not a holding company that derives more than 50% of its income from investments and loans:
+                                                    </lable>
+                                                </div>
+                                                &nbsp;
+                                                <div flex="20">
+                                                    <md-radio-button ng-style="{'display':'inline'}" ng-value="true">Yes</md-radio-button>
+                                                    <md-radio-button ng-style="{'display':'inline'}" ng-value="false"> No </md-radio-button>
+                                                </div>
+                                            </md-radio-group>
+                                            <br/>
+                                        </md-input-container>
+                                        <div layout-gt-xs="row" layout-align="center center">
+                                            <md-button type="submit" class="md-raised md-primary">
+                                                <div>
+                                                    Save
+                                                </div>
+                                            </md-button>
+                                        </div>
+                                    </md-input-container>
+                                </md-card-content>
+                            </md-card>
+                        </div>
+                    </div>
+                    <!-- </md-content> -->
+                </div>
+            </form>
+            <form id="detailed-background-form" name="detailed_background_form" ng-submit="detailed_background_form.$valid && registerStartup({'detailed_background':detailed_background},7,'detailed_background_form')">
+                <div ng-show="isSet(6)">
+                    <md-content class="md-padding " style="margin-right: 24%; margin-left:4%" layout-xs="column" layout="row">
+                        <div flex-xs="" flex-gt-xs="100" layout="column">
+                            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                                <md-card-content>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label class="kbit-sub-label eq-large-bottom-margin-offset">Correspondence Address of the Startup</label>
+                                            <!--<input type="text" ng-model="detailed_background.address" md-select-on-focus="" required>-->
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>Address</label>
+                                            <input type="text" ng-model="detailed_background.address" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>Taluka</label>
+                                            <input type="text" ng-model="detailed_background.taluka" md-select-on-focus="">
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label> District</label>
+                                            <input type="text" ng-model="detailed_background.district" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label> Pincode</label>
+                                            <input type="text" ng-model="detailed_background.pincode" allow-pattern="^[0-9]*$" md-maxlength="6" md-minlength="6" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <hr class="kbit-border">
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label class="kbit-sub-label eq-large-bottom-margin-offset">Company Contact Details</label>
+                                            <!--<input type="text" ng-model="detailed_background.address" md-select-on-focus="" required>-->
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label> Land Line No</label>
+                                            <input type="text" ng-model="detailed_background.company_land_line_number" allow-pattern="^[0-9]*$" md-select-on-focus="">
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label> Fax Number</label>
+                                            <input type="text" ng-model="detailed_background.company_fax_number" allow-pattern="^[0-9]*$" md-select-on-focus="">
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label> Mobile Number</label>
+                                            <input type="text" allow-pattern="^[0-9]*$" md-maxlength="10" md-minlength="10" ng-model="detailed_background.company_mobile_number" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label> Email ID</label>
+                                            <input type="email" ng-model="detailed_background.company_email_id" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <hr class="kbit-border">
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label class="kbit-sub-label eq-large-bottom-margin-offset">Contact Details of Managing Director/CEO/Chief Promoter</label>
+                                            <!--<input type="text" ng-model="detailed_background.address" md-select-on-focus="" required>-->
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label> CEO Name</label>
+                                            <input type="text" ng-model="detailed_background.CEO_name" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>CEO Landline Number </label>
+                                            <input type="text" ng-model="detailed_background.CEO_land_line_number" allow-pattern="^[0-9]*$">
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>CEO Fax Number </label>
+                                            <input type="text" ng-model="detailed_background.CEO_fax_number" allow-pattern="^[0-9]*$">
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>CEO Mobile Number </label>
+                                            <input type="text" ng-model="detailed_background.CEO_mobile_number" allow-pattern="^[0-9]*$" md-maxlength="10" md-minlength="10" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>CEO Email ID </label>
+                                            <input type="email" ng-model="detailed_background.CEO_email_id" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <hr class="kbit-border">
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label class="kbit-sub-label">Background of the Founder/Promoter</label>
+                                            <br/>
+                                            <span class="kbit-help-text eq-large-bottom-margin-offset">(Please provide the same details if there is more than one Founder/Chief Promoter/Chairman/MD/CEO)</span>
+                                        </md-input-container>
+                                    </div>
+                                    <input class="eq-large-bottom-margin-offset" type="checkbox" ng-click="copyCeoDataToBackground()"> Same as above
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>Nationality</label>
+                                            <input type="text" ng-model="detailed_background.founder_nationality" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>Age</label>
+                                            <input type="text" ng-model="detailed_background.founder_age" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>Mobile Number</label>
+                                            <input type="text" allow-pattern="^[0-9]*$" md-maxlength="10" md-minlength="10" ng-model="detailed_background.founder_mobile" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>Email Id</label>
+                                            <input type="email" ng-model="detailed_background.founder_emailId" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <hr class="kbit-border">
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label class="kbit-sub-label eq-large-bottom-margin-offset">Contact details of the Authorized Person </label>
+                                            <span class="kbit-help-text eq-large-bottom-margin-offset">(who would be co-ordinating with the Dept. on behalf of the company)</span>
+                                            <!--<input type="text" ng-model="detailed_background.authorized_person_name" md-select-on-focus="" required>-->
+                                        </md-input-container>
+                                    </div>
+                                    <input class="eq-large-bottom-margin-offset" type="checkbox" ng-click="copyCeoDataToAuthrize()"> Same as above
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>Authorized Person Name </label>
+                                            <input type="text" ng-model="detailed_background.authorized_person_name" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>Authorized Person Landline </label>
+                                            <input type="text" ng-model="detailed_background.authorized_person_land_line" allow-pattern="^[0-9]*$">
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>Authorized Person Fax </label>
+                                            <input type="text" ng-model="detailed_background.authorized_person_fax" allow-pattern="^[0-9]*$">
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>Authorized Person Mobile </label>
+                                            <input type="text" ng-model="detailed_background.authorized_person_mobile" allow-pattern="^[0-9]*$" md-maxlength="10" md-minlength="10" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>Authorized Person Email ID </label>
+                                            <input type="email" ng-model="detailed_background.authorized_person_emailId" md-select-on-focus="" required>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row">
+                                        <div class="eq-large-bottom-margin-offset">
+                                            <label class="kbit-label">If applicable upload Power of Attorney/board resolution appointment for Authorized Person who would be co-ordinating with the Dept.on behalf of the company/entity: (optional)
+                                            </label>
+                                            <span class="kbit-help-text">(file size should be less than 2MB, PDF, DOC, DOCX, JPG, PNG formats)</span> &nbsp; &nbsp;
+                                            <br/>
+                                        </div>
+                                    </div>
+                                    <div layout="column">
+                                        <span class="" ng-repeat="file in startupFile.attorney" ng-model="file">
+												<div flex="33" layout="row" class="eq-row-bottom-margin-offset eq-medium-top-margin-offset" layout-wrap>
+                                                <input type="file" onchange="angular.element(this).scope().uploadSingleFile(this, 'attorney' )" style="color:transparent; margin-right:-20%" >
+												<div flex="33" ng-if="file.name">{{file.name}}</div>
+												<a href="#" ng-if="startupFile.attorney.length > (startupFile.attorney.indexOf(file) + 1 )"
+												ng-click="removeFile(file , $index, 'attorney')" style="margin-left:10%">Remove</a>
+                                                 </div>
+											</span>
+                                    </div>
+                                    </md-input-container>
+                                    <div layout-gt-xs="row" layout-align="center center">
+                                        <md-button type="submit" class="md-raised md-primary">
+                                            <div>
+                                                Save
+                                            </div>
+                                        </md-button>
+                                    </div>
+                                </md-card-content>
+                            </md-card>
+                        </div>
+                    </md-content>
+                </div>
+            </form>
+            <form id="promotion-form" name="promotion_form" ng-submit="promotion_form.$valid && registerStartup({'promotion':promotion},8,'promotion_form')">
+                <div ng-show="isSet(7)">
+                    <md-content class="md-padding " style="margin-right: 24%; margin-left:4%" layout-xs="column" layout="row">
+                        <div flex-xs="" flex-gt-xs="100" layout="column">
+                            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                                <md-card-content>
+                                    <div layout-gt-xs="row">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <label>How did you hear about the Karnataka Startup Cell?</label>
+                                            <md-select ng-model="promotion.came_to_know" required>
+                                                <md-option value="Forum">Forum</md-option>
+                                                <md-option value="Search Engine">Search Engine</md-option>
+                                                <md-option value="Social Network">Social Network</md-option>
+                                                <md-option value="Advertisement">Advertisement</md-option>
+                                                <md-option value="Friend">Friend</md-option>
+                                                <md-option value="Blog">Blog</md-option>
+                                                <md-option value="Other">Other</md-option>
+                                            </md-select>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row" layout-align="center center">
+                                        <md-button type="submit" class="md-raised md-primary">
+                                            <div>
+                                                Save
+                                            </div>
+                                        </md-button>
+                                    </div>
+                                </md-card-content>
+                            </md-card>
+                        </div>
+                    </md-content>
+                </div>
+            </form>
+            <form novalidate id="incubator_details-form" name="incubator_detail" ng-submit="incubator_detail.$valid && registerStartup({'incubator_details':incubator_details},9,'incubator_detail')">
+                <div ng-show="isSet(8)">
+                    <md-content class="md-padding " style="margin-right: 24%; margin-left:4%" layout-xs="column" layout="row">
+                        <div flex-xs="" flex-gt-xs="100" layout="column">
+                            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                                <md-card-content>
+                                    <div layout-gt-xs="row" class="eq-large-bottom-margin-offset">
+                                        <md-input-container class="md-block" flex-gt-xs>
+                                            <md-radio-group ng-model="incubator_details.is_incubated" layout="row" required>
+                                                <lable style="color:#9e9e9e">Whether incubated currently in GoK supported Incubators: </lable>
+                                                &nbsp;
+                                                <md-radio-button ng-value="true">Yes</md-radio-button>
+                                                <md-radio-button ng-value="false"> No </md-radio-button>
+                                            </md-radio-group>
+                                        </md-input-container>
+                                    </div>
+                                    <div class="wrapper">
+                                        <div ng-if="incubator_details.is_incubated == true">
+                                            <div layout-gt-xs="row" class="eq-large-bottom-margin-offset">
+                                                <md-input-container class="md-block" flex-gt-xs>
+                                                    <label>Please select the Govt. of Karnataka incubator provide incubator endorsement as per Annexure2 attached below</label>
+                                                    <md-select data-ng-model="incubator_details.select_incubator">
+                                                        <md-option value="">Select Option</md-option>
+                                                        <md-option value="Internet and Mobile Association of India">Internet and Mobile Association of India</md-option>
+                                                        <md-option value="91 Springboard">91 Springboard</md-option>
+                                                        <md-option value="Government of Karnataka NASSCOM Startup Warehouse">Government of Karnataka NASSCOM Startup Warehouse</md-option>
+                                                        <md-option value="Government of Karnataka Bio-Innovation Center">Government of Karnataka Bio-Innovation Center</md-option>
+                                                        <md-option value="Government of Karnataka IOT-COE">Government of Karnataka IOT-COE</md-option>
+                                                        <md-option value="Government of Karnataka UAS Dharwad">Government of Karnataka UAS Dharwad</md-option>
+                                                    </md-select>
+                                                </md-input-container>
+                                            </div>
+                                        </div>
+                                        <div ng-if="incubator_details.is_incubated == false">
+                                            <span class="kbit-help-text eq-row-bottom-margin-offset">If you are incubated else where then please provide the following details</span>
+                                            <div layout-gt-xs="row">
+                                                <md-input-container class="md-block" flex-gt-xs>
+                                                    <label>Name </label>
+                                                    <input type="text" ng-model="incubator_details.name">
+                                                </md-input-container>
+                                            </div>
+                                            <div layout-gt-xs="row">
+                                                <md-input-container class="md-block" flex-gt-xs>
+                                                    <label>Address </label>
+                                                    <input type="text" ng-model="incubator_details.address">
+                                                </md-input-container>
+                                            </div>
+                                            <div layout-gt-xs="row">
+                                                <md-input-container class="md-block" flex-gt-xs>
+                                                    <label>Chief Promoter/MD </label>
+                                                    <input type="text" ng-model="incubator_details.chief_promoter">
+                                                </md-input-container>
+                                            </div>
+                                            <div layout-gt-xs="row">
+                                                <md-input-container class="md-block" flex-gt-xs>
+                                                    <label>Mobile number of Chief Promoter/MD </label>
+                                                    <input type="text" ng-model="incubator_details.mobile_number_chief_promoter" allow-pattern="^[0-9]*$" md-maxlength="10" md-minlength="10">
+                                                </md-input-container>
+                                            </div>
+                                            <div layout-gt-xs="row">
+                                                <md-input-container class="md-block" flex-gt-xs>
+                                                    <label>Email Address of the Chief Promoter/MD </label>
+                                                    <input type="email" ng-model="incubator_details.email_chief_promoter">
+                                                </md-input-container>
+                                            </div>
+                                            <div layout-gt-xs="row">
+                                                <md-input-container class="md-block" flex-gt-xs>
+                                                    <label>Website/url of the incubator </label>
+                                                    <input type="text" ng-model="incubator_details.website_incubator">
+                                                </md-input-container>
+                                            </div>
+                                            <div layout-gt-xs="row" class="eq-large-bottom-margin-offset">
+                                                <md-input-container class="md-block" flex-gt-xs>
+                                                    <label>If not incubated with GoK supported incubators, indicate the incubator that you would like to be affiliated with</label>
+                                                    <md-select data-ng-model="incubator_details.select_incubator">
+                                                        <md-option value="">Select Option</md-option>
+                                                        <md-option value="Internet and Mobile Association of India">Internet and Mobile Association of India</md-option>
+                                                        <md-option value="91 Springboard">91 Springboard</md-option>
+                                                        <md-option value="Government of Karnataka NASSCOM Startup Warehouse">Government of Karnataka NASSCOM Startup Warehouse</md-option>
+                                                        <md-option value="Government of Karnataka Bio-Innovation Center">Government of Karnataka Bio-Innovation Center</md-option>
+                                                        <md-option value="Government of Karnataka IOT-COE">Government of Karnataka IOT-COE</md-option>
+                                                        <md-option value="Government of Karnataka UAS Dharwad">Government of Karnataka UAS Dharwad</md-option>
+                                                    </md-select>
+                                                </md-input-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div layout-gt-xs="row" layout-align="center center">
+                                            <md-button type="submit" class="md-raised md-primary">
+                                                Save
+                                            </md-button>
+                                        </div>
+                                </md-card-content>
+                            </md-card>
+                        </div>
+                    </md-content>
+                </div>
+            </form>
+            <form novalidate id="annexure-form" name="annexure_form" ng-submit="annexure_form.$valid &&registerStartup({'annexure':annexure},10)">
+                <div ng-show="isSet(9)">
+                    <md-content class="md-padding " style="margin-right: 24%; margin-left:4%" layout-xs="column" layout="row">
+                        <div flex-xs="" flex-gt-xs="100" layout="column">
+                            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                                <md-card-content>
+                                    <div layout-gt-xs="row">
+                                        <label class="kbit-label"> Upload Annexure Certificate</label>&nbsp;
+                                        <span class="kbit-help-text">(file size should be less than 2MB, PDF, DOC, DOCX, JPG, PNG formats)</span>
+                                        <br/>
+                                    </div>
+                                    <div layout-gt-xs="row" class="eq-row-bottom-margin-offset">
+                                        <span class="kbit-help-text">Please download the annexure below to be printed on company letter head and upload the duly signed copy.</span>
+                                    </div>
+                                    <div layout="column">
+                                        <div flex="99" layout="row" class="eq-row-bottom-margin-offset eq-medium-top-margin-offset" layout-wrap>
+                                            <div flex="33" layout="row" class="eq-row-bottom-margin-offset eq-medium-top-margin-offset" layout-wrap>
+                                                <a href={{annexureUrl1}}>
+												   Download Annexure1</a>
+                                            </div>
+                                            <div flex="33" layout="row" class="eq-row-bottom-margin-offset eq-medium-top-margin-offset" layout-wrap>
+                                                Upload duly signed copy of annexure-I* <span class="kbit-help-text"> (self declaration on company letterhead)</span>
+                                            </div>
+                                            <div flex="33" layout="row" class="eq-row-bottom-margin-offset eq-medium-top-margin-offset" layout-wrap>
+                                                <input type="file" onchange="angular.element(this).scope().uploadSingleFile(this, 'annexure' , 0 )" style="color:transparent; margin-right:-20%" required> {{startupFile.annexure[0].name}}
+                                            </div>
+                                        </div>
+                                        <div flex="33" layout="row" class="eq-row-bottom-margin-offset eq-medium-top-margin-offset" layout-wrap>
+                                            <div flex="33" layout="row" class="eq-row-bottom-margin-offset eq-medium-top-margin-offset" layout-wrap>
+                                                <a href={{annexureUrl2}}>
+													   Download Annexure2</a>
+                                            </div>
+                                            <div flex="33" layout="row" class="eq-row-bottom-margin-offset eq-medium-top-margin-offset" layout-wrap>
+                                                Upload duly signed copy of annexure-II<span class="kbit-help-text">(incubator endorsement, if applicable)</span>
+                                            </div>
+                                            <div flex="33" layout="row" class="eq-row-bottom-margin-offset eq-medium-top-margin-offset" layout-wrap>
+                                                <input type="file" onchange="angular.element(this).scope().uploadSingleFile(this, 'annexure' , 1 )" style="color:transparent; margin-right:-20%"> {{startupFile.annexure[1].name}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div layout-gt-xs="row" layout-align="center center">
+                                        <md-button type="submit" class="md-raised md-primary">
+                                            Save
+                                        </md-button>
+                                    </div>
+                                </md-card-content>
+                            </md-card>
+                        </div>
+                    </md-content>
+                </div>
+            </form>
+            <form novalidate id="additional-form" name="additional_form" ng-submit="registerStartup({'additional_document':additional_document}, 10 , 'additional_form')">
+                <div ng-show="isSet(10)">
+                    <md-content class="md-padding " style="margin-right: 24%; margin-left:4%" layout-xs="column" layout="row">
+                        <div flex-xs="" flex-gt-xs="100" layout="column">
+                            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                                <md-card-content>
+                                    <div layout-gt-xs="row">
+                                        <label class="kbit-label">Operative Address</label>
+                                    </div>
+                                    <div layout-gt-xs="row eq-large-bottom-margin-offset">
+                                        <div class="eq-large-bottom-margin-offset">
+                                            <span class="kbit-help-text ">If the ROC or IC does not reveal the operative address, or the ROC is from some other state, please provide “Shops and Commercial Establishment” document &nbsp;(file size should be less than 2MB, PDF, DOC, DOCX, JPG, PNG formats)
+											</span>
+                                        </div>
+                                    </div>
+                                    <div layout="column">
+                                        <span class="" ng-repeat="file in startupFile.operative" ng-model="file">
+												<div flex="33" layout="row" class="eq-row-bottom-margin-offset eq-medium-top-margin-offset" layout-wrap>
+                                                <input type="file" onchange="angular.element(this).scope().uploadSingleFile(this, 'operative' )" style="color:transparent; margin-right:-20%" >
+												<div flex="33" ng-if="file.name">{{file.name}}</div>
+												<div flex="33">
+												<a href="#" ng-if="startupFile.operative.length > (startupFile.operative.indexOf(file) + 1 )"
+												ng-click="removeFile(file , $index, 'operative')" style="margin-left:10%">Remove</a>
+												</div>
+                                                 </div>
+											</span>
+                                    </div>
+                                    <div layout-gt-xs="row eq-large-bottom-margin-offset">
+                                        <div class="eq-large-bottom-margin-offset">
+                                            <span class="kbit-help-text ">If you have been requested to upload new documents or replace erroneous documents by the startupcell, please upload them here.
+The startupcell will be notified.
+											</span>
+                                        </div>
+                                    </div>
+                                    <md-input-container class="md-block" flex-gt-xs>
+                                        <label>Additional Documents </label>
+                                        <textarea ng-model="additional_document.additional_document_information" md-maxlength="5000" rows="2" md-select-on-focus=""></textarea>
+                                    </md-input-container>
+                                    <div layout-gt-xs="row eq-row-bottom-margin-offset">
+                                        <label class="kbit-label eq-row-bottom-margin-offset"> Upload Additional Document</label>
+                                        <span class="kbit-help-text eq-row-bottom-margin-offset">(file size should be less than 2MB, PDF, DOC, DOCX, JPG, PNG formats)</span>
+                                        <br/>
+                                    </div>
+                                    <br/>
+                                    <div layout="column">
+                                        <span class="" ng-repeat="file in startupFile.additional" ng-model="file">
+												<div flex="33" layout="row" class="eq-row-bottom-margin-offset eq-medium-top-margin-offset" layout-wrap>
+                                                <input type="file" onchange="angular.element(this).scope().uploadSingleFile(this, 'additional' )" style="color:transparent; margin-right:-20%" >
+												<div flex="33" ng-if="file.name">{{file.name}}</div>
+												<a href="#" ng-if="startupFile.additional.length > (startupFile.additional.indexOf(file) + 1 )"
+												ng-click="removeFile(file , $index, 'additional')" style="margin-left:10%">Remove</a>
+                                                 </div>
+											</span>
+                                    </div>
+                                    <div layout-gt-xs="row" layout-align="center center">
+                                        <md-button type="submit" class="md-raised md-primary">
+                                            Save
+                                        </md-button>
+                                    </div>
+                                </md-card-content>
+                            </md-card>
+                        </div>
+                    </md-content>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- </form> -->
+    <div layout-gt-xs="row" layout-align="center center">
+        <md-button ng-disabled='!submitEnable' type="submit" ng-click="submitStartup(data._id , lastStage.contentType)" class="md-raised md-primary">
+            Submit
+        </md-button>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+<div id="body">
+    <div class="kbit-content-box" ng-include="'/kbitsApp/views/templates/startupHeader.html'"></div>
+    <md-content class="md-padding kbit-card" layout-xs="column" layout="row">
+        <div flex-xs="" flex-gt-xs="100" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                <md-card-content>
+                    <span class="kbit-screen-title">Registration with Karnataka Startup Cell</span>
+                    <div ng-if="stage !== 'Welcome'" class="eq-medium-top-margin-offset">
+                        <span class="kbit-label"> Status :</span><b> {{status}}</b>
+                        <br>
+                        <div style="margin-left: 40px">
+                            <span ng-if='status=="Submit" || status=="In Process"' class="kbit-help-text">You have submitted the registration form. It is awaiting approval from
+                        KBITS
+                        </span>
+                            <span ng-if='status=="Draft"' class="kbit-help-text"> Please fill all the required fields and submit the form.
+                        </span>
+                            <span ng-if='status=="Approved"' class="kbit-help-text"> Your application has been approved.
+                        Please collect your certificate from KBITs Office.
+                        </span>
+                            <span ng-if='status=="Rejected"' class="kbit-help-text"> Your application has been rejected.
+                        If you want to apply agian please create a new account.
+                        </span>
+                            <br>
+                        </div>
+                        <span ng-if='applied_date' class="kbit-label"> Date Applied :</span> {{applied_date}}
+                        <br>
+                        <span ng-if='approved_date' class="kbit-label"> Date Approved :</span> {{approved_date}}
+                    </div>
+                    <div ng-if='status=="Rejected"'>
+                    	<span class="kbit-label"> Reason :</span><b> {{ reason_for_rejection }}</b>
+                        
+                    </div>
+                    <div ng-if='stage=="UserAction"'>
+                        <span class="kbit-label"> Reason :</span><b> {{ reason_for_send_to_user }}</b>
+                        
+                    </div>
+                    <div ng-if='stage == "Welcome"'>
+                        <p class=" eq-medium-top-margin-offset">Welcome <b>{{userName}} </b> to KBITS Startup Cell.
+                        </p>
+                        <div align="center" class="eq-row-bottom-margin-offset eq-medium-top-margin-offset">
+                            <div class="kbit-small-table-box ">
+                                <p class="eq-medium-top-margin-offset">You can now apply to get your Startup registered with us, and start availing various incentives and support we provide, once your application gets approved. </p>
+                                <p>You can also apply for Idea2POC program, or register for an Open House with Minister, even before your registration gets approved.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div layout-gt-xs="row" layout-align="center center">
+                        <div ng-if='stage == "UserAction"' align="center">
+                            <md-input-container class="md-block" flex-gt-xs align="center">
+                                <a class="option_name" data-ng-href="/registerStartup">
+                                    <i class="fa fa-pencil-square-o fa-4x"></i>
+                                    <br/>Edit Your Application</a>
+                                <div>Add all details and submit for approval
+                                </div>
+                            </md-input-container>
+                        </div>
+                        <div ng-if='stage == "Welcome" || stage == "Draft"' align="center">
+                            <md-input-container class="md-block" flex-gt-xs align="center">
+                                <a class="option_name" data-ng-href="/registerStartup">
+                                    <i class="fa fa-wpforms fa-4x"></i>
+                                    <br/>Apply For Startup Certification </a>
+                                <div>Add all details and submit for approval
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <md-card-actions layout="row" ng-if="status == 'Submit' || status =='In Process'">
+                        <a ng-click="submitStartup(data._id)" TARGET="_blank" class="btn btn-primary"> View My Application</a>
+                    </md-card-actions>
+                    <!-- <md-card-actions layout="row" layout-align="end center" ng-if="status == 'Approved'">
+                        <a href="/images/certificate.html" TARGET="_blank" class="btn btn-primary"><i class="fa fa-download" aria-hidden="true"></i> Download Certificate</a>
+                    </md-card-actions> -->
+                </md-card-content>
+            </md-card>
+        </div>
+    </md-content>
+    <md-content class="md-padding kbit-card" layout-xs="column" layout="row">
+        <div flex-xs="" flex-gt-xs="100" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+                <md-card-content>
+                    <div layout-gt-xs="row">
+                        <md-input-container class="md-block" flex-gt-xs align="center">
+                            <a class="option_name not-active">
+                                <i class="fa fa-lightbulb-o fa-4x "></i>
+                                <br/>Apply for Idea2POC</a>
+                            <div>Apply for Idea2POC grant-­in-­aid</div>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-xs align="center">
+                            <a class="option_name not-active">
+                                <i class="fa fa-users fa-4x "></i>
+                                <br/>Register for Open House with Minste​r</a>
+                            <div>Attend the next Open House. Limited Seats Only.</div>
+                        </md-input-container>
+                    </div>
+                </md-card-content>
+            </md-card>
+        </div>
+    </md-content>
+</div>

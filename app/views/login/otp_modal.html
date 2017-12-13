@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h4 class="modal-title">  OTP  </h4>
+</div>
+<div class="modal-body">
+    <div id='resend' ng-hide='!changeMobileSection'>
+        <label class="eq-field-label">Please enter the mobile number</label>
+        <input class="form-control eq-input-text-box" placeholder="Mobile" data-ng-model="data.mobile" required>
+        <button type="button" style="margin: 10px 5px 0 0;" class="btn btn-primary pull-right eq-text-btn" ng-click='resendOtp(data)'>Send OTP</button>
+    </div>
+    <br>
+    <div>
+        <label class="eq-field-label">Please enter the OTP for {{data.mobile}}</label>
+        <input type="text" autofocus class="form-control eq-input-text-box" placeholder="OTP" data-ng-model="data.otp" required>
+    </div>
+</div>
+<div class="modal-footer eq-otp-modal-footer">
+    <section class="panel">
+        <button type="button" class="btn btn-primary eq-text-btn" ng-click="verifyOtp(data)"> Verify </button>
+        <button type="button" class="btn btn-primary eq-text-btn" ng-click="cancel()"> cancel </button>
+    </section>
+    <a class="eq-link" style="margin: 10px 5px 0 0;"  ng-click='resendOtp(data)'> Resend OTP </a> &nbsp;
+    <a class="eq-link" style="margin: 10px 5px 0 0;" ng-click='changeMobile(data)'> Change Mobile </a>
+</div>

@@ -1,0 +1,518 @@
+<md-content class="md-padding" layout-xs="column" layout="row">
+	<div flex-xs="" flex-gt-xs="100" layout="column">
+		<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+			<md-card-content>
+				<div layout-gt-xs="row">
+					<md-input-container class="md-block">
+						<img ng-src="{{startupData.basic_details.logo.data}}" width="150">
+					</md-input-container>
+					<md-input-container class="md-block" style="margin-left: 20px ">
+						<p>
+							<h2>{{startupData.basic_details.name}}</h2>
+						</p>
+						<p> <a href>{{startupData.basic_details.url}}</a></p>
+						<p>{{startupData.technology_usage.area_of_operation}}</p>
+					</md-input-container>
+					<md-input-container class="md-block" style="margin-left: 20px ">
+						<p><span class="kbit-label">Founder: </span><b>{{startupData.detailed_background.CEO_name}} </b>
+							<span layout-gt-xs="row" style="margin-left: 50px">
+                            </span>
+							<span layout-gt-xs="row">
+                        {{startupData.detailed_background.CEO_mobile_number}}
+                                </span> {{startupData.detailed_background.CEO_email_id}} </p>
+						<p><span class="kbit-help-text">Email for communication:</span> {{startupData.user_id.email}}</p>
+					</md-input-container>
+					<md-input-container class="md-block" style="margin-left: 20px ">
+						<div ng-if="userInfo.type == 'Relationship' &&  !startupData.rm_assignee" class="eq-large-bottom-margin-offset" layout-gt-xs="row">
+							<md-button type="submit" class="md-raised md-primary" ng-click="assignToRM(userInfo._id , startupData._id)">
+								Assign to Me
+							</md-button>
+						</div>
+						<div ng-if="userInfo.type == 'Relationship' && startupData.rm_assignee && currentState == 'Submit' && startupData.rm_assignee.assignee_id == userInfo._id"
+							class="eq-large-bottom-margin-offset" layout-gt-xs="row">
+							<md-button type="submit" class="md-raised md-primary" ng-disabled="true">
+								Already assigned to me
+							</md-button>
+						</div>
+						<div ng-if="currentState == 'Submit' && startupData.rm_assignee && startupData.rm_assignee.assignee_id != userInfo._id" class="eq-large-bottom-margin-offset"
+							layout-gt-xs="row">
+							<md-button type="submit" class="md-raised md-primary" ng-disabled="true">
+								already assign to {{startupData.rm_assignee.name }}
+							</md-button>
+						</div>
+						<div ng-if="userInfo.type != 'Startup'">
+							<i class="fa fa-file-archive-o" aria-hidden="true"></i>
+							<a href={{zipped_file}} type="submit" class="md-raised md-primary">
+								Download all documents as zip
+						</a>
+						</div>
+					</md-input-container>
+
+				</div>
+			</md-card-content>
+		</md-card>
+		<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+			<md-card-content>
+				<div layout-gt-xs="row">
+					<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+						<span class="kbit-screen-subtitle">Technology & Sector </span>
+					</md-input-container>
+				</div>
+				<div layout-gt-xs="row">
+					<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+						<span class="kbit-label">Area Of Operation </span>
+						<p>{{startupData.technology_usage.area_of_operation}}</p>
+					</md-input-container>
+				</div>
+				<div layout-gt-xs="row">
+					<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+						<span class="kbit-label">How does your startup use Technology to enhance your business</span>
+						<p>{{startupData.technology_usage.technology}}</p>
+					</md-input-container>
+				</div>
+				<div layout-gt-xs="row">
+					<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+						<span class="kbit-label">Is it a Product Company </span>
+						<p>{{startupData.technology_usage.is_product_company}}</p>
+					</md-input-container>
+				</div>
+				<div layout-gt-xs="row">
+					<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+						<span class="kbit-label">Is it a Service Company </span>
+						<p>{{startupData.technology_usage.is_service_company}}</p>
+					</md-input-container>
+				</div>
+			</md-card-content>
+		</md-card>
+		<md-content class="md-padding " layout-xs="column" layout="row">
+			<div flex-xs="" flex-gt-xs="50" layout="column">
+				<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+					<md-card-content>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-screen-subtitle">Company </span>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">Status of the Company/Unit Undertaking </span>
+								<p>{{startupData.company_records.undertaking_status}}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">Commencement of Commercial Operations </span>
+								<p>{{startupData.company_records.commercial_commencement_date | date:dd-MM-yyyy}}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">No. of Establishments/ Branches / Offices </span>
+								<p>{{startupData.company_records.number_of_branches}}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">Date of Incorporation </span>
+								<p>{{startupData.company_records.incorporation_date | date:dd-MM-yyyy}}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">Incorporation Number </span>
+								<p>{{startupData.company_records.encorporation_number}}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">PAN Number </span>
+								<p>{{startupData.company_records.PAN_number}}</p>
+							</md-input-container>
+						</div>
+						<div ng-if="startupData.incorporation.length >0" layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">Incorporation Certificate </span>
+								<div ng-repeat="incorporationData in startupData.incorporation">
+									<a href="#" ng-click="downloadPDF(incorporationData.upload_id)">
+										<i class="fa fa-download" aria-hidden="true"></i>
+									</a>
+									<a href="#" id="test" ng-click="showFile(incorporationData.upload_id)">
+										<i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{incorporationData.name}}
+									</a>
+								</div>
+								<div class="kbit-help-text">clicking on link will redirect to new tab.This link will not work if pop-ups are disabled in your browser. See steps
+									to enable for <a target="_blank" href="https://www.cengage.com/lms_docs/system_check/popupsfailed/popupsfailed_chrome.htm">chrome</a>									and <a target="_blank" href="https://support.microsoft.com/en-us/help/17479/windows-internet-explorer-11-change-security-privacy-settings">Internet Explorer</a>.</div>
+							</md-input-container>
+						</div>
+					</md-card-content>
+				</md-card>
+				<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+					<md-card-content>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-screen-subtitle">Employees </span>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">No. of permanent qualified* workforce(Total) </span>
+								<p>{{startupData.emp_info.no_of_permanent_emp}}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">No. of Women out of total qualified workforce </span>
+								<p>{{startupData.emp_info.no_of_women}}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">No. of permanent qualified workforce in Karnataka </span>
+								<p>{{startupData.emp_info.no_of_permanent_qualified_workforce}}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">No. of Women out of the total qualified workforce in Karnataka </span>
+								<p>{{startupData.emp_info.no_of_qualified_women}}</p>
+							</md-input-container>
+						</div>
+					</md-card-content>
+				</md-card>
+				<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+					<md-card-content>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-screen-subtitle">Detailed Background </span>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">Address of the Startup </span>
+								<p>{{startupData.detailed_background.address}}</p>
+								<p>{{startupData.detailed_background.taluka}}</p>
+								<p>{{startupData.detailed_background.district}}</p>
+								<p>{{startupData.detailed_background.pincode}}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">CEO Details </span>
+								<p>{{startupData.detailed_background.CEO_name}}</p>
+								<p>{{startupData.detailed_background.CEO_mobile_number}}</p>
+								<p>{{startupData.detailed_background.CEO_email_id}}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">Background of the Founder/Promoter </span>
+								<p>{{startupData.detailed_background.founder_nationality}}</p>
+								<p>{{startupData.detailed_background.founder_age}}</p>
+								<p>{{startupData.detailed_background.founder_mobile}}</p>
+								<p>{{startupData.detailed_background.founder_emailId}}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">Authorized Person </span>
+								<p>{{startupData.detailed_background.authorized_person_name}}</p>
+								<p>{{startupData.detailed_background.authorized_person_mobile}}</p>
+								<p>{{startupData.detailed_background.authorized_person_emailId}}</p>
+							</md-input-container>
+						</div>
+						<div ng-if="startupData.attorney[0]" layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">Attorney Document </span>
+								<br/>
+								<a href="#" ng-click="downloadPDF(startupData.attorney[0].upload_id)">
+									<i class="fa fa-download" aria-hidden="true"></i>
+								</a>
+								<a href="#" id="test" ng-click="showFile(startupData.attorney[0].upload_id)">
+									<i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{startupData.attorney[0].name}}
+								</a>
+								<div class="kbit-help-text">clicking on link will redirect to new tab.This link will not work if pop-ups are disabled in your browser. See steps
+									to enable for <a target="_blank" href="https://www.cengage.com/lms_docs/system_check/popupsfailed/popupsfailed_chrome.htm">chrome</a>									and <a target="_blank" href="https://support.microsoft.com/en-us/help/17479/windows-internet-explorer-11-change-security-privacy-settings">Internet Explorer</a>.</div>
+							</md-input-container>
+						</div>
+
+						<div ng-if="startupData.operative[0]" layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">Operative Address </span>
+								<br/>
+								<a href="#" ng-click="downloadPDF(startupData.operative[0].upload_id)">
+									<i class="fa fa-download" aria-hidden="true"></i>
+								</a>
+								<a href="#" id="test" ng-click="showFile(startupData.operative[0].upload_id)">
+									<i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{startupData.operative[0].name}}
+								</a>
+								<div class="kbit-help-text">clicking on link will redirect to new tab.This link will not work if pop-ups are disabled in your browser. See steps
+									to enable for <a target="_blank" href="https://www.cengage.com/lms_docs/system_check/popupsfailed/popupsfailed_chrome.htm">chrome</a>									and <a target="_blank" href="https://support.microsoft.com/en-us/help/17479/windows-internet-explorer-11-change-security-privacy-settings">Internet Explorer</a>.</div>
+							</md-input-container>
+						</div>
+					</md-card-content>
+				</md-card>
+			</div>
+			<div flex-xs="" flex-gt-xs="50" layout="column">
+				<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+					<md-card-content>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-screen-subtitle">Incubation Details </span>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">Whether incubated currently in GoK supported Incubators </span>
+								<p>{{startupData.incubator_details.is_incubated | YesNo}}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row" ng-if="startupData.incubator_details.is_incubated == true">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">Government of Karnataka incubator you are affiliated with </span>
+								<p>{{startupData.incubator_details.select_incubator}}</p>
+							</md-input-container>
+						</div>
+						<div ng-if="startupData.incubator_details.is_incubated == false">
+							<span class="kbit-help-text eq-row-bottom-margin-offset"> Details of other incubator</span>
+							<div layout-gt-xs="row">
+								<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+									<span class="kbit-label">Name </span>
+									<p>{{startupData.incubator_details.name}}</p>
+								</md-input-container>
+							</div>
+							<div layout-gt-xs="row">
+								<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+									<span class="kbit-label">Address </span>
+									<p>{{startupData.incubator_details.address}}</p>
+								</md-input-container>
+							</div>
+							<div layout-gt-xs="row">
+								<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+									<span class="kbit-label">Chief Promoter/MD</span>
+									<p>{{startupData.incubator_details.chief_promoter}}</p>
+								</md-input-container>
+							</div>
+							<div layout-gt-xs="row">
+								<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+									<span class="kbit-label">Mobile number of Chief Promoter/MD</span>
+									<p>{{startupData.incubator_details.mobile_number_chief_promoter}}</p>
+								</md-input-container>
+							</div>
+							<div layout-gt-xs="row">
+								<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+									<span class="kbit-label">Email Address of the Chief Promoter/MD</span>
+									<p>{{startupData.incubator_details.email_chief_promoter}}</p>
+								</md-input-container>
+							</div>
+							<div layout-gt-xs="row">
+								<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+									<span class="kbit-label">Website/url of the incubator</span>
+									<p>{{startupData.incubator_details.website_incubator}}</p>
+								</md-input-container>
+							</div>
+							<div layout-gt-xs="row">
+								<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+									<span class="kbit-label">The incubator that you would like to be affiliated with as Virtual Incubatee</span>
+									<p>{{startupData.incubator_details.select_incubator}}</p>
+								</md-input-container>
+							</div>
+						</div>
+
+
+
+					</md-card-content>
+				</md-card>
+				<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+					<md-card-content>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-screen-subtitle">Annexure </span>
+							</md-input-container>
+						</div>
+						<div ng-if="startupData.annexure.length>0" layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">Annexure Document </span>
+								<div ng-repeat="annexureData in startupData.annexure">
+									<a href="#" ng-click="downloadPDF(annexureData.upload_id)">
+										<i class="fa fa-download" aria-hidden="true"></i>
+									</a>
+									<a href="#" id="test" ng-click="showFile(annexureData.upload_id)">
+										<i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{annexureData.name}}
+									</a>
+								</div>
+								<div class="kbit-help-text">clicking on link will redirect to new tab.This link will not work if pop-ups are disabled in your browser. See steps
+									to enable for <a target="_blank" href="https://www.cengage.com/lms_docs/system_check/popupsfailed/popupsfailed_chrome.htm">chrome</a>									and <a target="_blank" href="https://support.microsoft.com/en-us/help/17479/windows-internet-explorer-11-change-security-privacy-settings">Internet Explorer</a>.</div>
+							</md-input-container>
+						</div>
+					</md-card-content>
+				</md-card>
+
+
+				<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+					<md-card-content>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-screen-subtitle">Promotion </span>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">How did you hear about the Karnataka Startup Cell? </span>
+								<p>{{startupData.promotion.came_to_know}}</p>
+							</md-input-container>
+						</div>
+						</md-input-container>
+					</md-card-content>
+				</md-card>
+				<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+					<md-card-content>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-screen-subtitle">Self Certification </span>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label"> The applicant’s revenue is below 50Cr per annum </span>
+								<p>{{ startupData.self_cerfication.is_revenew_below_fifty_crores | YesNo}}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">The applicant’s company has not been formed by demerger or reconstitution of an already existing business </span>
+								<p>{{ startupData.self_cerfication.is_formed_by_dermeger | YesNo}}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">The applicant’s company is not a subsidiary company wherein the parent company is not a startup itself </span>
+								<p>{{ startupData.self_cerfication.is_parent_company_is_a_startup | YesNo}}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">The applicant is not a merged entity wherein the combined entity is not a startup </span>
+								<p>{{ startupData.self_cerfication.is_combined_entity_a_startup | YesNo}}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">The applicant is not a franchisee of an existing business </span>
+								<p>{{ startupData.self_cerfication.is_franchisee_of_existing_business | YesNo }}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">The applicant is not promoted or sponsored by or related to an industrial group whose turnover exceeds INR 300 Cr. Per annum </span>
+								<p>{{ startupData.self_cerfication.is_application_promoted | YesNo}}</p>
+							</md-input-container>
+						</div>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">The applicant is not a holding company that derives more than 50% of its income from investments and loans </span>
+								<p>{{ startupData.self_cerfication.is_not_a_holding_company | YesNo}}</p>
+							</md-input-container>
+						</div>
+					</md-card-content>
+				</md-card>
+				<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+					<md-card-content>
+						<div layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-screen-subtitle">Additional Documents </span>
+							</md-input-container>
+						</div>
+						<div ng-if="startupData.additional.length>0" layout-gt-xs="row">
+							<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+								<span class="kbit-label">Additional Document </span>
+								<!--<p>{{startupData.additional_document.additional_document_information}}</p>-->
+								<div ng-repeat="additionalData in startupData.additional">
+									<a href="#" ng-click="downloadPDF(additionalData.upload_id)">
+										<i class="fa fa-download" aria-hidden="true"></i>
+									</a>
+									<a href="#" id="test" ng-click="showFile(additionalData.upload_id)">
+										<i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{additionalData.name}}
+									</a>
+								</div>
+								<div class="kbit-help-text">clicking on link will redirect to new tab.This link will not work if pop-ups are disabled in your browser. See steps
+									to enable for <a target="_blank" href="https://www.cengage.com/lms_docs/system_check/popupsfailed/popupsfailed_chrome.htm">chrome</a>									and <a target="_blank" href="https://support.microsoft.com/en-us/help/17479/windows-internet-explorer-11-change-security-privacy-settings">Internet Explorer</a>.</div>
+							</md-input-container>
+						</div>
+					</md-card-content>
+				</md-card>
+
+			</div>
+		</md-content>
+		<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+			<md-card-content>
+				<div layout-gt-xs="row">
+					<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+						<span class="kbit-screen-subtitle">Financials </span>
+					</md-input-container>
+				</div>
+				<md-input-container class="md-block" layout-align="space-around" flex-gt-xs>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<div>
+								<table class="table table-hover table-responsive">
+									<thead>
+										<tr>
+											<th>
+												Year
+											</th>
+											<th>
+												Profit Before Tax (INR)
+											</th>
+											<th>
+												Net Worth (INR)
+											</th>
+											<th>
+												Reserves and Surplus (INR)
+											</th>
+											<th>
+												Revenue (INR)
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="pointer-hover" ng-repeat="yearlyFinance in startupData.financial_information.indicators">
+											<td>
+												{{yearlyFinance.year}}
+											</td>
+											<td>
+												{{yearlyFinance.profit_before_tax}}
+											</td>
+											<td>
+												{{yearlyFinance.net_worth}}
+											</td>
+											<td>
+												{{yearlyFinance.reserves_surplus}}
+											</td>
+											<td>
+												{{yearlyFinance.revenue}}
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</md-input-container>
+				<md-input-container ng-if="startupData.financial.length>0" class="md-block" layout-align="space-around" flex-gt-xs>
+					<div ng-repeat="finanaceData in startupData.financial">
+						<a href="#" ng-click="downloadPDF(finanaceData.upload_id)">
+							<i class="fa fa-download" aria-hidden="true"></i>
+						</a>
+						<a href="#" id="test" ng-click="showFile(finanaceData.upload_id)">
+							<i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{finanaceData.name}}
+						</a>
+					</div>
+					<div class="kbit-help-text">clicking on link will redirect to new tab.This link will not work if pop-ups are disabled in your browser. See steps
+						to enable for <a target="_blank" href="https://www.cengage.com/lms_docs/system_check/popupsfailed/popupsfailed_chrome.htm">chrome</a>						and <a target="_blank" href="https://support.microsoft.com/en-us/help/17479/windows-internet-explorer-11-change-security-privacy-settings">Internet Explorer</a>.</div>
+				</md-input-container>
+				<md-card-actions layout="row" layout-align="center center">
+					<a href="#" ng-click="goHome()">Home</a>
+				</md-card-actions>
+			</md-card-content>
+		</md-card>
+	</div>

@@ -1,0 +1,97 @@
+<div id="body">
+	<form name='userRegistrationForm'>
+		<md-content class="md-padding kbit-card" layout-xs="column" layout="row">
+			<div flex-xs="" flex-gt-xs="100" layout="column">
+				<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+					<md-card-content>
+						<div layout-align="center center">
+							<div class="text-center">
+								<h4>Create an account with KBITs Startup Cell </h4>
+							</div>
+						</div>
+						<md-input-container class="md-block" flex-gt-xs>
+							<label>First Name</label>
+							<input type="text" ng-model="user.first_name" required>
+						</md-input-container>
+						<md-input-container class="md-block" flex-gt-xs>
+							<label>Last Name</label>
+							<input type="text" ng-model="user.last_name" required>
+						</md-input-container>
+						<md-input-container class="md-block" flex-gt-xs>
+							<label>Email</label>
+							<input id="username" name="username" type="email" ng-model="user.email" required>
+						</md-input-container>
+						<md-input-container class="md-block" flex-gt-xs>
+							<label>Mobile Number</label>
+							<input type="text" ng-model="user.mobile_number" allow-pattern="^[0-9]*$" md-maxlength="10" minlength="10" required>
+						</md-input-container>
+						<md-input-container class="md-block" flex-gt-xs>
+							<label>Password</label>
+							<input type="password" ng-model="user.password" required>
+						</md-input-container>
+						<md-input-container class="md-block" flex-gt-xs>
+							<label>Confirm Password</label>
+							<input type="password" ng-pattern="getPattern()" name="confirm_password" ng-model="user.confirm_password">
+							<small ng-show="userForm.confirm_password.$error.pattern">
+                                Passwords must match
+                            </small>
+						</md-input-container>
+						<md-input-container class="md-block" flex-gt-xs>
+							<label>Company Name</label>
+							<input type="text " ng-model="user.company_name" required>
+						</md-input-container>
+						<md-input-container class="md-block" flex-gt-xs>
+							<label>Website</label>
+							<input type="text " ng-model="user.website_url" required>
+						</md-input-container>
+						<md-input-container class="md-block" flex-gt-xs>
+							<label>Designation</label>
+							<input type="text " ng-model="user.designation" required>
+						</md-input-container>
+						<md-input-container class="md-block" flex-gt-xs>
+							<label>Select User Type</label>
+							<md-select data-ng-model="user.type" required>
+								<md-option ng-disabled="type !== userTypes.disabled" ng-selected="type == userTypes.selected" ng-repeat="type in userTypes.types"
+									ng-value="type">{{type}}</md-option>
+							</md-select>
+						</md-input-container>
+						<md-input-container ng-if="user.type === 'Startup'" class="md-block" flex-gt-xs>
+							<md-switch class="md-primary" ng-model="data.cb1" aria-label="Switch 1" ng-true-value="'Yes'" ng-false-value="'No'">
+								Are you registered in Karnataka?: {{ data.cb1 }}
+							</md-switch>
+							<md-switch class="md-primary" ng-model="data.cb2" aria-label="Switch 1" ng-true-value="'Yes'" ng-false-value="'No'">
+								Is your revenue under 50 cr?: {{ data.cb2 }}
+							</md-switch>
+							<md-switch class="md-primary" ng-model="data.cb3" aria-label="Switch 1" ng-true-value="'Yes'" ng-false-value="'No'">
+								Is 50% of your qualified workforce engaged in Karnataka?: {{ data.cb3 }}
+							</md-switch>
+							<md-switch class="md-primary" ng-model="data.cb4" aria-label="Switch 1" ng-true-value="'Yes'" ng-false-value="'No'">
+								Are you a
+								<span class="md-icon-button" aria-label="refresh">
+									<md-tooltip style="height: auto;" md-direction="left">
+										The facilitation under this policy is intended<br>
+                                        for only technology based startup, i.e. one<br>
+                                         that creates a technology based service or product<br>
+                                         or uses technology for enhancing functionality<br>
+                                         or reach of an existing product or service.
+									</md-tooltip>technology* </span> startup?: {{ data.cb4 }}
+								<md-button class="md-icon-button" aria-label="refresh">
+									<md-tooltip md-direction="bottom" value="bottom">
+										Refresh
+									</md-tooltip>
+								</md-button>
+							</md-switch>
+						</md-input-container>
+						<div layout-gt-xs="row" layout-align="center center">
+							<md-button type="submit" ng-click="userRegistrationForm.$valid && submitAdd(user)" class="md-raised md-primary">
+								<div>
+									Save
+								</div>
+							</md-button>
+						</div>
+					</md-card-content>
+				</md-card>
+			</div>
+		</md-content>
+	</form>
+</div>

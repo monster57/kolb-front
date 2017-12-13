@@ -1,0 +1,13 @@
+{
+  "CONSTANTS": {
+      "API_URL": "http://localhost:1339",
+      "backendUrl": "http://localhost:1339",
+      "host": "localhost",
+      "ports": "3001",
+      "AccessLevels": {
+          "anon": "FPO-FIELD",
+          "user": "FPO-MGMT",
+          "admin": "ADMIN"
+      }
+   }
+}

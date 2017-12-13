@@ -1,0 +1,1073 @@
+/**/
+
+
+/**/
+
+
+/* Classes added to get the new look and feel dated 18/02/16*/
+
+
+/* Replacement of - screen_header 
+   Purpose - Customize screen header*/
+
+.eq-screen-header {
+    font-family: "Ubuntu", sans-serif;
+    color: #ffffff;
+    top: 0;
+    z-index: 10;
+    font-style: normal;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 7px 10px;
+    width: 100%;
+}
+
+.eq-screen-title {
+    color: #0094DE;
+    font-weight: bold;
+    /*text-decoration: underline;*/
+    text-align: center;
+    font-size: 22px;
+    margin-top: 0px;
+    margin-bottom: 1%;
+}
+
+.eq-screen-sub-header {
+    font-family: "Arial Rounded MT", sans-serif;
+    color: #ffffff;
+    font-style: normal;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 8px 10px;
+    background-color: darkred;
+}
+
+.eq-accordion {
+    font-family: "Ubuntu", sans-serif;
+    color: #000000;
+}
+
+.eq-accordion > .panel-heading {
+    background-image: none !important;
+    background-color: #a8b738 !important;
+    padding: 8px 10px;
+}
+
+.eq-accordion > .panel-heading h4 {
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.eq-accordion > .panel-heading a {
+    color: #ffffff;
+}
+
+.eq-accordion .panel-body {
+    padding-left: 4px;
+    padding-right: 10px;
+}
+
+.eq-accordion a:hover,
+a:visited,
+a:focus {
+    text-decoration: none !important;
+    outline: none;
+}
+
+.eq-guiding-text {
+    font-family: "Ubuntu", sans-serif;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 0px;
+    color: #999999;
+}
+
+
+/* Replacement of - input-control
+   Purpose - Customize input boxes */
+
+.eq-input-text-box {
+    border: none;
+    border-bottom: 0.5px solid #b7b7b7;
+    outline: none;
+    font-family: "Droid-Sans";
+    font-size: 12px;
+    text-transform: capitalize;
+    box-shadow: none;
+    border-radius: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 22px;
+}
+
+.eq-input-text-box[type=number]::-webkit-inner-spin-button,
+.eq-input-text-box[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.eq-input-text-box[type=email],
+.eq-input-text-box[type=password] {
+    text-transform: none;
+}
+
+.eq-input-text-box[type=number] {
+    maxlength: "11";
+}
+
+.eq-input-textarea-box {
+    border: 0.5px solid #b7b7b7;
+    font-family: "Droid-Sans";
+    font-size: 12px;
+    box-shadow: none;
+    border-radius: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+
+/* Purpose - Customize placeholder in input boxes */
+
+.eq-input-text-box::-webkit-input-placeholder {
+    text-transform: lowercase;
+    font-style: italic;
+    font-size: 10px;
+    font-family: "Arial Rounded MT", sans-serif;
+    color: white;
+    /*#b7b7b7;*/
+}
+
+.eq-input-text-box:-moz-placeholder {
+    text-transform: lowercase;
+    font-style: italic;
+    font-size: 10px;
+    font-family: "Arial Rounded MT", sans-serif;
+    color: white;
+    /*#b7b7b7;*/
+}
+
+.eq-input-text-box::-moz-placeholder {
+    text-transform: lowercase;
+    font-style: italic;
+    font-size: 10px;
+    font-family: "Arial Rounded MT", sans-serif;
+    color: white;
+    /*#b7b7b7;*/
+}
+
+.eq-input-text-box:-ms-input-placeholder {
+    text-transform: lowercase;
+    font-style: italic;
+    font-size: 10px;
+    font-family: "Arial Rounded MT", sans-serif;
+    color: white;
+    /*#b7b7b7;*/
+}
+
+
+/* Purpose - Cutomize boilerplate labels */
+
+.eq-field-label {
+    font-size: 12px;
+    font-weight: bold;
+    font-style: normal;
+    color: #999999;
+    font-family: "Arial Rounded MT", sans-serif;
+    text-transform: capitalize;
+    margin-bottom: 0px;
+}
+
+
+/* Purpose - Cutomize fact / Info texts */
+
+.eq-fact-info {
+    font-family: "Arial Rounded MT", sans-serif;
+    color: gray;
+    font-size: 12px;
+}
+
+
+/* Purpose - Cutomize tables / grid */
+
+.eq-table {
+    font-family: "Arial Rounded MT", sans-serif;
+    border: 0.5px solid #b7b7b7;
+}
+
+
+/* Purpose - Cutomize row header in table */
+
+.eq-table-row-header {
+    font-family: "Arial Rounded MT", sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #999999;
+}
+
+
+/* Purpose - Cutomize column header in table */
+
+.eq-table-col-header {
+    font-family: "Arial Rounded MT", sans-serif;
+    font-size: 12px;
+    color: #434343;
+}
+
+
+/* Purpose - Cutomize table summary */
+
+.eq-table-summary {
+    font-family: "Arial Rounded MT", sans-serif;
+    font-size: 12px;
+    color: #434343;
+}
+
+
+/* Replacement of - btn-custom 
+   Purpose - Customize glyphicon buttons */
+
+.eq-glyph-btn {
+    height: 20px!important;
+    border: 1px solid!important;
+    border-color: #ffffff!important;
+    background-color: transparent;
+    padding-top: 0px!important;
+    padding-bottom: 0px!important;
+    color: #ffffff!important;
+}
+
+.eq-glyph-btn:hover {
+    background-color: #f2cd38;
+}
+
+.eq-text-btn {
+    font-size: 12px;
+    font-family: "Ubuntu", sans-serif;
+    text-transform: capitalize;
+}
+
+.eq-link {
+    font-weight: normal;
+    /*font-size: 12px;*/
+    font-color: #4a86e8;
+    /*font-family: "Arial Rounded MT", sans-serif;*/
+    cursor: pointer;
+}
+
+.eq-link:hover {
+    text-decoration: none;
+}
+
+.eq-img-profile {
+    height: 150px;
+    width: 150px;
+}
+
+@media(max-width:768px) {
+    .eq-img-profile {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        float: none !important;
+    }
+    .eq-img-placeholder {
+        display: block;
+        margin-left: auto !important;
+        margin-right: auto;
+        float: none !important;
+        width: 55px;
+    }
+    .dashboard-detail-text {
+        text-align: center;
+    }
+}
+
+.eq-media-large-thumb {
+    border: 2px solid gray;
+    height: 160px;
+    vertical-align: initial;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.eq-media-medium-thumb {
+    border: 2px solid gray;
+    height: 80px;
+    /*vertical-align: initial;*/
+    width: 100px;
+    margin: 10px;
+}
+
+.eq-img-full {}
+
+.eq-otp-modal-footer .panel {
+    box-shadow: none;
+    border: none;
+}
+
+
+/*#loading-bar {
+    pointer-events: all;
+    z-index: 99999;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    cursor: wait;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+}*/
+
+.fpo-accent-color {
+    color: #a8b738;
+}
+
+
+/*FPO Dashboard not active*/
+
+.not-active {
+    pointer-events: none;
+    cursor: default;
+    color: #C0C0C0;
+}
+
+
+/*eqtribe card css......*/
+
+
+/* Replacement of - list-group-item */
+
+.eq-list-group-item {
+    padding: 0 0 0 10px;
+    font-weight: normal;
+    border: none;
+}
+
+
+/* Replacement of - list-group */
+
+.eq-list-group {
+    margin-bottom: 10px;
+}
+
+
+/*#eq-index-container
+{
+    opacity: 0.9;
+    padding-left: 0;
+    padding-right: 0;
+    min-height: 100%;
+}*/
+
+
+/* Replacement of - padding10 
+   Purpose - Gap between screen header and Input fields*/
+
+.eq-content-container {
+    padding: 15px 10px 10px 10px !important;
+}
+
+
+/* Replacement of - gap20 
+   Purpose - Gap between icons on dashboard screens*/
+
+.eq-large-bottom-margin-offset {
+    margin-bottom: 25px;
+}
+
+
+/* Replacement of - radio-div 
+   Purpose - offsets for radio buttons*/
+
+.eq-large-top-margin-offset {
+    margin-top: 25px;
+}
+
+.eq-medium-top-margin-offset {
+    margin-top: 10px;
+}
+
+.eq-small-top-margin-offset {
+    margin-top: 5px;
+}
+
+.eq-row-bottom-margin-offset {
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
+.eq-col-bottom-margin-offset {
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
+#eq-navbar-toggle {
+    padding: 5px;
+    border-color: transparent;
+}
+
+#eq-navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}
+
+#eq-navbar-toggle:hover {
+    border-color: #ffffff;
+    background-color: transparent;
+}
+
+#eq-navbar-toggle:focus {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.eq-navbar-nav li a {
+    color: #ffffff !important;
+    font-size: 11px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.eq-navbar-default .eq-navbar-brand {
+    color: #ffffff !important;
+    font-size: 15px;
+    padding: 10px;
+    height: auto !important;
+}
+
+.eq-navbar-default .eq-navbar-brand:hover {
+    color: #ffffff;
+}
+
+.eq-navbar-default {
+    border: 0px!important;
+}
+
+.eq-navbar {
+    min-height: 5px!important;
+    font-weight: bold;
+    background-color: #a8b738;
+}
+
+
+/* Replacement of - dropdown-menu 
+   Purpose - Customize dropdown menu*/
+
+.eq-dropdown-menu {
+    overflow: visible;
+    width: 100%;
+}
+
+.eq-dropdown-menu li a {
+    color: #000000 !important;
+}
+
+.eq-multiselect-dropdown ul {
+    min-width: 100%;
+}
+
+
+/*#footer{
+    font-family: "Arial Rounded MT", sans-serif;
+    color: #a8b738;
+    font-size: 15px;
+    font-weight: bold;
+    text-shadow: .5px 0px #000;
+    text-align: center;
+    background-color: #ffffff !important;
+    border-top: 1px solid #a8b738;
+}
+
+#footer div{
+    background-image: none !important;
+    background: none !important;
+}
+
+#footer div.navbar
+{
+    margin-bottom: 0 !important;
+}
+
+#footer div.container
+{
+    margin: 0 auto !important;
+    width: 100%;
+}
+
+#footer ul.eq-navbar-nav
+{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#footer div.container li
+{
+    display: inline-block;
+}
+
+#footer div.container li a
+{
+    color: #808c2a !important;
+    display: inline-block;
+}*/
+
+.short_desc_main {
+    font-family: "Arial Rounded MT", sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.short_desc_more {
+    font-family: "Arial Rounded MT", sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: normal;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+/* Replacement of - list_item_main
+   Purpose - Customize list item header*/
+
+.eq-list-item-header {
+    font-weight: bold;
+}
+
+.option_name {
+    font-family: "Arial Rounded MT", sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.option_guiding_text {
+    font-family: "Arial Rounded MT", sans-serif;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.eq_bg_accent {
+    background-color: darkred !important;
+}
+
+.btn-danger {
+    height: 21px!important;
+    border: 1px solid!important;
+    border-color: #ffffff!important;
+    background-color: transparent;
+    padding-top: 0px!important;
+    padding-bottom: 0px!important;
+    color: #c9302c!important;
+}
+
+.btn-danger:hover {
+    background-color: #f2cd38;
+}
+
+.btn-group-custom .btn:first-child:not(:last-child) {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.btn-group-custom .btn:last-child:not(:first-child) {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.element-icon {
+    margin-top: 30px;
+    color: #f2cd38;
+}
+
+
+/* Gap in bootstrap select tag */
+
+.select-gap {
+    margin-top: 8px;
+    margin-bottom: 20px
+}
+
+
+/* Replacement of - linkDisabled
+   Purpose - To disable anchor tag*/
+
+.eq-link-disable {
+    cursor: not-allowed;
+    pointer-events: none;
+    color: grey;
+}
+
+
+/*.loading-bar-styles {
+    color: #49809C;
+}
+*/
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+.btn.caret {
+    float: right;
+    margin-top: 8px;
+}
+
+.dropdown-multiselect,
+.dropdown-toggle {
+    width: 100%;
+}
+
+.profilePicMedium {
+    border: 2px solid #144773;
+    margin-top: 15px;
+    width: 200px;
+    height: 150px;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.gray-background {
+    background-color: #adadad;
+    border-color: 1px solid black;
+}
+
+.add-photo-btn-save {
+    -webkit-border-radius: 8;
+    -moz-border-radius: 8;
+    border-radius: 8px;
+    font-family: "Arial Rounded MT", sans-serif;
+    color: #fff2ff;
+    font-size: 15px;
+    margin-top: 10px;
+    float: left;
+    background: #4CAF50;
+    padding: 6px 20px 6px 20px;
+    border: solid #1f628d 2px;
+}
+
+.add-photo-btn-save:hover {
+    background: #2d752e;
+}
+
+.add-photo-btn-remove:hover {
+    background: #fc3c3c;
+    border: solid #a30000 2px;
+    border-color: 1px solid red;
+}
+
+.add-photo-btn-remove {
+    -webkit-border-radius: 8;
+    -moz-border-radius: 8;
+    border: solid #a30000 2px;
+    border-radius: 8px;
+    margin: 10px;
+    font-family: "Arial Rounded MT", sans-serif;
+    color: #ffffff;
+    font-size: 15px;
+    background: #f07373;
+    padding: 6px 20px 6px 20px;
+    text-decoration: none;
+}
+
+
+/* Datepicker */
+
+.custom_calendar + div.dropdown-menu {
+    background-color: #fff;
+    color: #000 !important;
+}
+
+.bootstrap-datetimepicker-widget table td.active,
+.bootstrap-datetimepicker-widget table td.active:hover {
+    background-color: #a8b738;
+    color: #000;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+input.custom_calendar[readonly] {
+    background-color: white;
+}
+
+.eq-fa {
+    vertical-align: text-top;
+}
+
+@media (max-width: 768px) {
+    #date_joined {
+        margin-left: 0 !important;
+    }
+}
+
+.eq-table-input-text-box {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .btn-responsive {
+        padding: 4px 9px;
+        font-size: 90%;
+        line-height: 1.2;
+        /*border-radius:3px;*/
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .btn-responsive {
+        padding: 4px 9px;
+        font-size: 90%;
+        line-height: 1.2;
+    }
+}
+
+.eq-login-img {
+    width: 125px;
+    margin: 0 auto 10px;
+    display: block;
+}
+
+.eq-floating-box {
+    width: 50%;
+    margin: auto;
+    margin-top: 150px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+}
+
+.eq-heading {
+    margin: 0px;
+}
+
+@media (max-width: 959px) {
+    md-dialog.md-dialog-fullscreen {
+        max-height: 70%;
+        max-width: 90%;
+        min-height: 70%;
+        min-width: 90%;
+        border-radius: 0;
+        position: absolute;
+    }
+}
+
+.eq-popup-btn {
+    color: #fff;
+    background-color: #a8b738;
+    border-color: rgb(250, 250, 250);
+}
+
+.md-dialog-container {
+    left: 0px;
+}
+
+.panel-body {
+    overflow: inherit !important;
+}
+
+.eq-box-screen-header {
+    font-family: "Ubuntu", sans-serif;
+    color: #000000;
+    top: 0;
+    z-index: 10;
+    font-style: normal;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 7px 10px;
+    width: 100%;
+    margin-left: 0px;
+    background-color: #0094DE !important;
+    margin-bottom: 20px;
+}
+
+.kbit-small-table-box {
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #eef7fc;
+    background-color: #eef7fc;
+    width: 70%;
+}
+
+.md-datepicker-input-container input {
+    width: 150em;
+}
+
+.icon-danger {
+    zoom: 1.1;
+    color: red;
+}
+
+.icon-success {
+    zoom: 1.1;
+    color: green;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#container {
+    min-height: 100%;
+    position: relative;
+    background-color: #FAFAFA;
+}
+
+#body {
+    background-color: #FAFAFA;
+    /* Height of the footer */
+}
+
+.icon-info {
+    zoom: 1.1;
+    color: #fad206;
+}
+
+#footer {
+    height: 60px;
+    background-color: #e0e0e0 !important;
+    color: #000000;
+}
+
+.kbit-table {
+    width: 100%;
+}
+
+.kbit-table,
+th,
+td {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+}
+
+
+/*th, td {
+    padding: 5px;
+    text-align: left;
+}*/
+
+.kbit-header-upper {
+    font-family: "Ubuntu", sans-serif;
+    color: #000000 !important;
+    font-style: normal;
+    font-size: 60px;
+    font-weight: bold;
+    padding: 7px -1px;
+    background-color: #e0e0e0 !important;
+    height: 90px;
+}
+
+.kbit-header-lower {
+    font-family: "Ubuntu", sans-serif;
+    color: #e2492f;
+    top: -15px;
+    z-index: 10;
+    font-style: normal;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 7px -1px;
+    width: 100%;
+    background-color: #e2492f !important;
+    height: 10px;
+}
+
+.md-padding {
+padding: 0px !important;
+}
+
+.kbit-nav-bk-color {
+    background: whitesmoke;
+    color: green;
+}
+
+.kbit-card {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.kbit-textarea-animat {
+    background-color: #FFF;
+    top: 50px;
+    left: 25px;
+    width: 160px;
+    height: 35px;
+    box-shadow: 0px 0px 0px #000;
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+.kbit-textarea-animat:focus {
+    background-color: #FFF;
+    top: 0;
+    left: 0;
+    height: 150px;
+    width: 200px;
+    border-radius: 2px;
+    border: 2px solid #d4d0ba;
+    box-shadow: 0px 0px 15px #FFFFFF;
+}
+
+.kbit-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: #dddddd;
+    color: #FFFFFF;
+}
+
+.kbit-help-text{
+    color: #a7a7a8;
+    font-size: 13px;
+}
+
+.kbit-tab{
+    text-transform: capitalize !important;
+}
+
+.kbit-label{
+    color: #9E9E9E;
+    font-size: 13px;
+}
+
+/*for virtual list*/
+
+.virtualRepeatdemoVerticalUsage #vertical-container {
+  height: 400px;
+  width: 100%;
+  max-width: 500px; }
+
+.virtualRepeatdemoVerticalUsage .repeated-item {
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+  height: 100%;
+  padding-top: 10px; }
+
+.virtualRepeatdemoVerticalUsage md-content {
+  margin: 16px; }
+
+.virtualRepeatdemoVerticalUsage md-virtual-repeat-container {
+  border: solid 1px grey; }
+
+.virtualRepeatdemoVerticalUsage .md-virtual-repeat-container .md-virtual-repeat-offsetter div {
+  padding-left: 16px; }
+
+  .kbit-screen-title {
+    color: #000000;
+    font-weight: bold;
+    /*text-decoration: underline;*/
+    font-size: 22px;
+    margin-top: 0px;
+    margin-bottom: 1%;
+    }
+
+    .kbit-screen-subtitle {
+    color: #1D71A3;
+    font-weight: bold;
+    /*text-decoration: underline;*/
+    font-size: 18px;
+    margin-top: 0px;
+    margin-bottom: 1%;
+    }
+
+body{
+    color: #FAFAFA;
+}
+.kbit-button-dropdown{
+    color: #000000;
+    font-size: 20px;
+    margin-right:10px;
+    text-transform: capitalize;
+}
+
+.kbit-button-dropdown:hover{
+    color: #000000;
+    text-decoration: none;
+    
+}
+.kbit-pre-color {
+    color: #000000;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
+    background-color: #a0c5e5 !important;
+}
+.kbit a{
+    color: #000000;
+}
+
+ #example-one { margin-bottom: -9px; }
+  [contenteditable="true"] { padding: 10px; }
+  [contenteditable="true"]:hover { outline: 1px solid #000; }
+  
+  .md-datepicker-button {
+  display: none;
+}
+
+.kbit-scrollable {
+   overflow-y:scroll; 
+   overflow:auto; 
+   overflow-x:hidden; 
+   height:300px;
+}
+.kbits-background{
+background-color: #eef7fc !important;
+}
+
+.kbit-active-button {font-size:30px;cursor:pointer;}
+.kbit-active-button {font-size:30px;cursor:pointer;}
+i.inactive { color: #5cb85c}
+i.active {color: #d9534f}
+
+.kbit-checklist{
+    margin-left: 10%;
+   max-width: 80% !important;
+   border-top: thick #000000;
+   /*margin: 0px !important;*/
+}
+
+.kbit-sub-label{
+    color: #a7a7a8;
+    font-size: 18px;
+}
+
+.kbit-border{
+    height:2px;border:none;color:#333;background-color:#333;
+}
+ .table>thead:first-child>tr:first-child>th{
+     border-top: 1px solid #ccc;
+
+ }
+
+ md-tooltip .md-content {
+    height: auto;
+}
+.kbit-calendar .md-datepicker-input-container {
+    margin-left: 0px !important;
+}

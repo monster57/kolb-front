@@ -1,0 +1,34 @@
+<md-content class="md-padding kbit-card" layout-xs="column" layout="row">
+    <div flex-xs="" flex-gt-xs="100" layout="column">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+            <md-card-content>
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <span class="kbit-screen-title">Applications</span>
+                    </md-input-container>
+                </div>
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" flex-gt-xs ng-if="categoryData.length > 0">
+                        <table class="table table-hover table-responsive">
+                            <tbody>
+                                <tr ng-repeat="startup in categoryData" ng-click="startupDetails(startup._id)" class="pointer-hover">
+                                    <td>
+                                        <a href>{{startup.basic_details.name}}, {{startup.technology_usage.area_of_operation}}</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--<div ng-repeat="startup in categoryData">
+                            <p><a href ng-click="startupDetails(startup._id)">{{startup.basic_details.name}}, {{startup.technology_usage.area_of_operation}}</a></p>
+                        </div>-->
+                    </md-input-container>
+                    <div layout="row" layout-align="center center">
+                     <md-input-container class="md-block" flex-gt-xs ng-if ="categoryData.length == 0">
+                         Currently no applications!!
+                     </md-input-container>
+                        </div>
+                    </div>
+                </div>
+            </md-card-content>
+        </md-card>
+</md-content>
